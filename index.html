@@ -1,12 +1,464 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mejora del Proceso de Soporte al Cliente en ElectroTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .collapse-content {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="bg-gray-100 text-gray-800">
+    <!-- Contenedor Principal -->
+    <div class="flex h-screen">
+
+        <!-- Barra de Navegación Lateral -->
+        <nav class="w-64 bg-blue-900 text-white flex-shrink-0">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold">ElectroTech</h1>
+            </div>
+            <ul class="mt-6">
+                <li class="hover:bg-blue-700">
+                    <a href="#resumen" class="block py-2 px-4">Resumen Ejecutivo</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#stakeholders" class="block py-2 px-4">Stakeholders</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#caso-negocio" class="block py-2 px-4">Caso de Negocio</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#antecedentes" class="block py-2 px-4">Antecedentes</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#etapas" class="block py-2 px-4">Etapas del Proyecto</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#registro-interesados" class="block py-2 px-4">Registro de Interesados</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#referencias" class="block py-2 px-4">Referencias</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Contenido Principal -->
+        <main class="flex-1 p-8 overflow-y-auto bg-gray-50">
+
+            <!-- Sección de Resumen Ejecutivo -->
+            <section id="resumen" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-bold mb-4">Resumen Ejecutivo</h2>
+                    <p class="text-lg">
+                        ElectroTech, una empresa pionera en soluciones tecnológicas, enfrenta desafíos en su proceso de
+                        soporte al cliente: largos tiempos de espera, dificultad para rastrear solicitudes, y falta de
+                        una base de conocimiento centralizada. La solución propuesta es mejorar estos procesos para
+                        elevar la satisfacción del cliente mediante un sistema de help desk, reduciendo tiempos de
+                        respuesta y mejorando la resolución de incidentes.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Stakeholders -->
+            <section id="stakeholders" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-bold mb-4">Stakeholders</h2>
+                    <ul class="list-disc pl-6 text-lg">
+                        <li><strong>Equipo de Soporte Técnico:</strong> Implementarán y usarán las nuevas herramientas.
+                        </li>
+                        <li><strong>Gerencia:</strong> Supervisarán y aprobarán el proyecto, alineándolo con los
+                            objetivos estratégicos.</li>
+                        <li><strong>Departamento de Ventas:</strong> Colaborarán para mejorar la experiencia del
+                            cliente.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Sección de Caso de Negocio -->
+            <section id="caso-negocio" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-bold mb-4">Caso de Negocio</h2>
+                    <p class="text-lg">
+                        Actualmente, el servicio al cliente de ElectroTech presenta deficiencias, lo que afecta
+                        negativamente la rentabilidad. La solución incluye la implementación de un manual de
+                        procedimientos centralizado, capacitación del personal, y optimización de sistemas de soporte.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Antecedentes -->
+            <section id="antecedentes" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+
+                    <h2 class="text-3xl font-bold mb-4">Antecedentes</h2>
+
+                    <!-- Antecedente 1 -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                        <button onclick="toggleCollapse('antecedente1')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Antecedente 1: Implementación del chatbot</span>
+                        </button>
+                        <div id="antecedente1" class="collapse-content p-4 text-gray-700">
+                            <p>
+                                El estudio de Pérez (2023) analiza el impacto de un software chatbot en la optimización
+                                de
+                                la gestión de niveles de servicio en el Ministerio de Educación. El objetivo es mejorar
+                                la
+                                atención al usuario mediante la implementación de un chatbot que automatice la
+                                interacción y
+                                gestione solicitudes. La investigación utiliza un diseño pre-experimental con una
+                                muestra de
+                                372 tickets de soporte, evaluando el tiempo de respuesta, satisfacción del usuario y
+                                precisión en la gestión de solicitudes. El software chatbot mejoró la eficiencia en la
+                                gestión de niveles de servicio y la satisfacción del usuario. Los resultados demostraron
+                                una
+                                reducción en los tiempos de respuesta y una mejora general en la experiencia del
+                                usuario. Se
+                                recomienda continuar optimizando el chatbot y expandir su uso en otros departamentos del
+                                Ministerio.<br>
+                                La implementación de un chatbot en el soporte técnico de ElectroTech puede optimizar la
+                                gestión de tickets, mejorando la velocidad de respuesta y reduciendo la carga de trabajo
+                                manual. Tal como se demostró en el proyecto del Ministerio de Educación, un chatbot
+                                puede
+                                manejar las consultas iniciales, resolver problemas básicos, y derivar casos complejos
+                                al
+                                personal adecuado. Esto significa que:<br>
+                                <li>Reducción de tiempos de respuesta: Al automatizar respuestas para problemas comunes
+                                    (preguntas frecuentes, seguimiento de pedidos, problemas técnicos básicos), el
+                                    tiempo de
+                                    resolución se reduce drásticamente.</li>
+                                <li>Mejora de la satisfacción del cliente: Los clientes reciben asistencia inmediata a
+                                    través de
+                                    un canal accesible las 24 horas, lo que incrementa la lealtad y la satisfacción
+                                    general.
+                                </li>
+                                <li>Liberación de recursos humanos: Los agentes de soporte pueden dedicarse a tareas más
+                                    complejas, ya que las consultas de bajo nivel serían resueltas automáticamente.</li>
+                                ElectroTech puede beneficiarse directamente del uso de un chatbot para optimizar los
+                                flujos
+                                de soporte. Se puede diseñar un chatbot que responda a preguntas sobre productos, guías
+                                de
+                                solución de problemas, y estado de pedidos, mejorando la eficiencia general.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Antecedente 2 -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                        <button onclick="toggleCollapse('antecedente2')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Antecedente 2: Base de conocimiento para soporte</span>
+                        </button>
+                        <div id="antecedente2" class="collapse-content p-4 text-gray-700">
+                            <p>
+                                El estudio de Hernández Alape et al. (2021), propone un plan de mejora para el área de
+                                soporte técnico en la Corporación Unificada Nacional de Educación Superior (CUN)
+                                mediante la
+                                implementación de una base de conocimientos. Esta herramienta permitirá la autogestión
+                                por
+                                parte de los usuarios, reduciendo el volumen de solicitudes de primer nivel y
+                                optimizando el
+                                trabajo del equipo de soporte. La plataforma utilizada será Zoho Desk, centralizando la
+                                atención de estudiantes, docentes y administrativos. La implementación de una base de
+                                conocimientos resultará en una mayor eficiencia operativa, reduciendo las solicitudes de
+                                soporte de primer nivel y liberando recursos humanos para tareas más complejas. Esto
+                                mejorará la calidad del servicio percibido por los usuarios y optimizará el uso de los
+                                recursos tecnológicos disponibles.<br>
+                                La creación de una base de conocimientos, como se propone en el proyecto de la CUN,
+                                puede
+                                ser clave para reducir las solicitudes de soporte. Esto permite que los clientes
+                                encuentren
+                                soluciones por sí mismos sin necesidad de interactuar con un agente de soporte. Los
+                                beneficios incluyen:<br>
+                                <li>Disminución de tickets de primer nivel: Al permitir que los clientes accedan a
+                                    tutoriales, guías y FAQs, muchas de las consultas más simples se resolverán sin
+                                    intervención humana.
+                                </li>
+                                <li>
+                                    Optimización del tiempo de los agentes: Con menos consultas de bajo nivel, los
+                                    agentes
+                                    podrán concentrarse en resolver problemas más técnicos o complejos.
+
+                                </li>
+                                <li>Centralización de información: Una base de conocimientos bien diseñada se convierte
+                                    en
+                                    un repositorio central donde los clientes y el equipo de soporte pueden encontrar
+                                    toda
+                                    la información relevante, lo que reduce la duplicidad de trabajo y mejora la
+                                    consistencia en las respuestas.
+                                </li>
+                                ElectroTech puede implementar una plataforma de conocimiento en línea donde los clientes
+                                puedan acceder a información técnica, manuales, guías paso a paso y soluciones a
+                                problemas
+                                comunes. Esto optimizaría los tiempos de atención y reduciría significativamente la
+                                carga de
+                                trabajo del equipo de soporte.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Antecedente 3 -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                        <button onclick="toggleCollapse('antecedente3')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Antecedente 3: Automatización de procesos</span>
+                        </button>
+                        <div id="antecedente3" class="collapse-content p-4 text-gray-700">
+                            <p>
+                                Insapillo (2023), aborda la problemática de ineficiencia en el sistema de atención de
+                                incidencias del Gobierno Regional de Loreto, donde los usuarios experimentaban tiempos
+                                de
+                                respuesta prolongados y falta de claridad en el seguimiento de sus solicitudes. Para
+                                resolver esto, se desarrolló e implementó un chatbot con inteligencia artificial capaz
+                                de
+                                responder a preguntas frecuentes, registrar automáticamente las incidencias, y
+                                proporcionar
+                                un flujo de trabajo más organizado para los agentes de soporte. La metodología incluyó
+                                un
+                                análisis previo del sistema helpdesk existente, la identificación de necesidades de los
+                                usuarios y la configuración del chatbot para manejar tanto respuestas automatizadas como
+                                derivaciones a operadores humanos cuando fuera necesario.<br>
+                                Tras la implementación del chatbot, se observó una mejora significativa en la eficiencia
+                                del
+                                sistema de helpdesk. El tiempo promedio de respuesta se redujo considerablemente y la
+                                satisfacción del usuario aumentó, gracias a la capacidad del chatbot para manejar
+                                automáticamente consultas comunes y permitir que los agentes humanos se concentren en
+                                problemas más complejos. Además, el chatbot proporcionó una plataforma para recopilar
+                                datos
+                                sobre las consultas de los usuarios, permitiendo una mejora continua del servicio
+                                mediante
+                                análisis de datos. Los resultados demuestran que la integración de inteligencia
+                                artificial
+                                en los sistemas de soporte puede transformar radicalmente la experiencia del cliente y
+                                optimizar la operación interna de las organizaciones.<br>
+                                Siendo así para ElectroTech, implementar un chatbot similar podría optimizar la
+                                eficiencia
+                                del equipo de soporte al cliente, reducir los tiempos de espera y proporcionar un
+                                servicio
+                                más ágil y efectivo. Un chatbot en ElectroTech podría encargarse de tareas repetitivas,
+                                como
+                                consultas sobre políticas de garantía, detalles de productos y procedimientos de
+                                solución de
+                                problemas básicos, lo cual liberaría a los agentes de servicio para que se concentren en
+                                problemas más complejos y específicos. Además, el análisis de las interacciones del
+                                chatbot
+                                con los clientes podría ofrecer valiosos insights para mejorar continuamente los
+                                servicios
+                                de atención al cliente.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Antecedente 4 -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                        <button onclick="toggleCollapse('antecedente4')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Antecedente 4: Mejoras en los tiempos de respuesta</span>
+                        </button>
+                        <div id="antecedente4" class="collapse-content p-4 text-gray-700">
+                            <p>
+                                Sofía (2022), presenta un estudio exhaustivo sobre la optimización de procesos en un
+                                centro
+                                de salud mediante la digitalización y automatización del sistema de gestión de citas y
+                                entrega de resultados de análisis clínicos. Utilizando la metodología BPMN (Business
+                                Process
+                                Model and Notation), se rediseñó el flujo de trabajo de estos procesos críticos para
+                                reducir
+                                tiempos de espera y mejorar la experiencia del paciente. Se implementaron sistemas de
+                                recordatorios automáticos, opciones de autoservicio para la programación de citas, y una
+                                plataforma de gestión de resultados que facilita la consulta en línea por parte de los
+                                pacientes. La transformación digital de estos procesos llevó a una reducción
+                                significativa
+                                en los tiempos de espera para obtener una cita o recibir resultados, lo que mejoró la
+                                satisfacción de los pacientes y la eficiencia operativa del centro de salud. El estudio
+                                también destaca la importancia de realizar un análisis continuo de los procesos para
+                                identificar oportunidades de mejora adicionales. La integración de nuevas tecnologías
+                                como
+                                la inteligencia artificial para prever la demanda de citas y gestionar la distribución
+                                de
+                                recursos, además de módulos adicionales de autoservicio, fueron identificados como pasos
+                                futuros para mantener la competitividad del servicio.<br>
+                                Este estudio ofrece un modelo práctico de cómo la automatización de procesos mediante
+                                herramientas de gestión de flujos de trabajo puede ser aplicada a los procesos de
+                                soporte al
+                                cliente en ElectroTech. Al digitalizar y automatizar procesos como la asignación de
+                                tareas a
+                                agentes de soporte, la programación de citas para reparaciones o consultas técnicas, y
+                                la
+                                actualización en tiempo real del estado de los casos, ElectroTech podría mejorar
+                                significativamente la eficiencia operativa y la experiencia del cliente.
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Antecedente 5 -->
+                    <div class="bg-white rounded-lg shadow-lg p-4">
+                        <button onclick="toggleCollapse('antecedente5')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Antecedente 5: Uso de inteligencia artificial</span>
+                        </button>
+                        <div id="antecedente5" class="collapse-content p-4 text-gray-700">
+                            <p>
+                                Según los investigadores Moposita & Jordán (2022) exploran la evolución de los chatbots
+                                como
+                                herramientas de atención al cliente en varios sectores durante la pandemia de COVID-19.
+                                El
+                                estudio analiza cómo los chatbots se han convertido en una solución esencial para las
+                                empresas que buscan optimizar la interacción con los clientes, reducir costos
+                                operativos, y
+                                mejorar la satisfacción y fidelización del cliente. También se detallan las
+                                características
+                                clave que deben tener los chatbots para ser efectivos, como la adaptabilidad, la
+                                accesibilidad, la proactividad, la personalidad y la sociabilidad. Los autores concluyen
+                                que
+                                los chatbots han transformado la atención al cliente, especialmente en tiempos de crisis
+                                como la pandemia, al proporcionar respuestas rápidas y precisas a las consultas de los
+                                clientes a través de múltiples canales de comunicación. La automatización de la atención
+                                al
+                                cliente mediante chatbots ha permitido a las empresas incrementar sus ventas, optimizar
+                                el
+                                uso de recursos humanos y mejorar la experiencia del cliente. En muchos casos, la
+                                implementación de chatbots ha llevado a una optimización de la interacción con el
+                                cliente en
+                                un rango del 60% al 91% cuando se integra con plataformas de mensajería como WhatsApp y
+                                Facebook.<br>
+                                Por lo tanto, los chatbots tienen un gran potencial para mejorar la eficiencia del
+                                servicio
+                                de atención al cliente en ElectroTech. La implementación de un chatbot que funcione en
+                                plataformas como WhatsApp, Facebook Messenger o el sitio web de la empresa permitiría
+                                ofrecer una atención más rápida, personalizada y en tiempo real. Esto no solo ayudaría a
+                                gestionar de manera más eficiente las consultas y solicitudes de los clientes, sino que
+                                también proporciona a ElectroTech información valiosa sobre las interacciones con los
+                                usuarios, permitiendo ajustar y mejorar las estrategias de marketing y ventas para
+                                aprovechar mejor las oportunidades de negocio.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Sección de Etapas del Proyecto -->
+            <section id="etapas" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-bold mb-4">Etapas del Proyecto</h2>
+                    <ol class="list-decimal pl-6 text-lg">
+                        <li><strong>Inicio del Proyecto:</strong> Se define el propósito y alcance del proyecto.</li>
+                        <li><strong>Planificación:</strong> Se analizan los procesos actuales, se establecen objetivos
+                            claros y un plan detallado.</li>
+                        <li><strong>Ejecución:</strong> Se implementan las mejoras en los procesos de soporte y se
+                            capacita al personal.</li>
+                        <li><strong>Monitoreo y Control:</strong> Se utilizan KPIs para monitorear el progreso y ajustar
+                            el plan si es necesario.</li>
+                        <li><strong>Cierre del Proyecto:</strong> Se revisan los objetivos y se entregan formalmente los
+                            resultados a los stakeholders.</li>
+                    </ol>
+                </div>
+            </section>
+            <!-- Sección de Registro de Interesados -->
+            <section id="registro-interesados" class="mb-12">
+                <h2 class="text-3xl font-bold mb-4">Registro de Interesados</h2>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <table class="min-w-full bg-white border-collapse">
+                        <thead>
+                            <tr class="bg-blue-100">
+                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Stakeholder</th>
+                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Evaluación</th>
+                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Clasificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4 border border-gray-200">Equipo de Soporte Técnico</td>
+                                <td class="py-2 px-4 border border-gray-200">INTERÉS ALTO - PODER BAJO</td>
+                                <td class="py-2 px-4 border border-gray-200">MITIGAR</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border border-gray-200">Gerencia</td>
+                                <td class="py-2 px-4 border border-gray-200">INTERÉS BAJO - PODER ALTO</td>
+                                <td class="py-2 px-4 border border-gray-200">ATENCIÓN</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border border-gray-200">Departamento de Ventas</td>
+                                <td class="py-2 px-4 border border-gray-200">INTERÉS ALTO - PODER BAJO</td>
+                                <td class="py-2 px-4 border border-gray-200">MITIGAR</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border border-gray-200">Clientes</td>
+                                <td class="py-2 px-4 border border-gray-200">INTERÉS ALTO - PODER BAJO</td>
+                                <td class="py-2 px-4 border border-gray-200">MITIGAR</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border border-gray-200">Competencia</td>
+                                <td class="py-2 px-4 border border-gray-200">INTERÉS ALTO - PODER BAJO</td>
+                                <td class="py-2 px-4 border border-gray-200">MITIGAR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sección de Referencias -->
+            <section id="referencias" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-bold mb-4">Referencias</h2>
+                    <ol class="list-decimal pl-6 text-lg">
+                        <li>Hernández, D. P., Ríos, S. L., & Yamamoto, S. A. (2021, 23 abril). Plan de Mejoramiento para
+                            la Optimización de las Operaciones de Soporte Técnico a Partir de la Implementación de una
+                            Base
+                            de Conocimientos en el Help Desk de la CUN.
+                            <a href="https://repository.uniminuto.edu/handle/10656/12599" class="underline">
+                                https://repository.uniminuto.edu/handle/10656/12599
+                            </a>
+                        </li>
+                        <li>Insapillo, M. del P. (2023, 27 noviembre). Implementación de chatbot con inteligencia
+                            artificial
+                            para el mejoramiento del sistema HelpDesk en el Gobierno Regional Loreto, Iquitos 2023.
+                            <a href="http://repositorio.ucp.edu.pe/handle/UCP/2752" class="underline">
+                                http://repositorio.ucp.edu.pe/handle/UCP/2752
+                            </a>
+                        </li>
+                        <li>
+                            Moposita, D. A., & Jordán, J. E. (2022). Chatbot una herramienta de atención al cliente en
+                            tiempos de COVID-19: un acercamiento teórico. Uniandes Episteme, 9(3), 327-350. Recuperado a
+                            partir de <a href="https://revista.uniandes.edu.ec/ojs/index.php/EPISTEME/article/view/2481"
+                                class="underline">
+                                https://revista.uniandes.edu.ec/ojs/index.php/EPISTEME/article/view/2481
+                            </a>
+                        </li>
+                        <li> Pérez, V. (2023). Desarrollo del software chatbot para la gestión de niveles del servicio
+                            de la
+                            unidad de servicios de atención al usuario del Ministerio de Educación.<a
+                                href="https://repositorio.unife.edu.pe/repositorio/handle/20.500.11955/1168"
+                                class="underline">
+                                https://repositorio.unife.edu.pe/repositorio/handle/20.500.11955/1168
+                            </a></li>
+                        <li>
+                            Sofía, C. V. F. (2022, 15 julio). Optimización del Proceso de Gestión de Citas y Análisis
+                            Clínicos en un Centro de Salud. <a
+                                href="https://repositorio.ucsm.edu.pe/items/db933841-2edd-4214-964e-21e225ac2330"
+                                class="underline">
+                                https://repositorio.ucsm.edu.pe/items/db933841-2edd-4214-964e-21e225ac2330
+                            </a>
+
+                        </li>
+
+                    </ol>
+                </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
