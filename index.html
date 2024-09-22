@@ -6,9 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mejora del Proceso de Soporte al Cliente en ElectroTech</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
     <style>
         .collapse-content {
             display: none;
+        }
+
+        #pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
@@ -16,15 +24,14 @@
 <body class="bg-gray-100 text-gray-800">
     <!-- Contenedor Principal -->
     <div class="flex v-screen">
-
         <!-- Barra de Navegación Lateral -->
-        <nav class="w-64 bg-blue-900 text-white flex-shrink-0">
+        <nav class="w-64 bg-blue-900 text-white h-screen fixed">
             <div class="p-6">
                 <h1 class="text-2xl font-bold">ElectroTech</h1>
             </div>
             <ul class="mt-6">
                 <li class="hover:bg-blue-700">
-                    <a href="#resumen" class="block py-2 px-4">Resumen Ejecutivo</a>
+                    <a href="#presentacion" class="block py-2 px-4">Presentación</a>
                 </li>
                 <li class="hover:bg-blue-700">
                     <a href="#stakeholders" class="block py-2 px-4">Stakeholders</a>
@@ -39,6 +46,12 @@
                     <a href="#etapas" class="block py-2 px-4">Etapas del Proyecto</a>
                 </li>
                 <li class="hover:bg-blue-700">
+                    <a href="#acta-constitucion" class="block py-2 px-4">Acta Constitución</a>
+                </li>
+                <li class="hover:bg-blue-700">
+                    <a href="#interes" class="block py-2 px-4">Interés sobre el Proyecto</a>
+                </li>
+                <li class="hover:bg-blue-700">
                     <a href="#registro-interesados" class="block py-2 px-4">Registro de Interesados</a>
                 </li>
                 <li class="hover:bg-blue-700">
@@ -48,35 +61,88 @@
         </nav>
 
         <!-- Contenido Principal -->
-        <main class="flex-1 p-8 overflow-y-auto bg-gray-50">
+        <main class="ml-64 p-6">
 
-            <!-- Sección de Resumen Ejecutivo -->
-            <section id="resumen" class="mb-12">
+            <!-- Sección de presentación -->
+            <section id="presentacion" class="mb-12 p-6">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Resumen Ejecutivo</h2>
-                    <p class="text-lg">
-                        ElectroTech, una empresa pionera en soluciones tecnológicas, enfrenta desafíos en su proceso de
-                        soporte al cliente: largos tiempos de espera, dificultad para rastrear solicitudes, y falta de
-                        una base de conocimiento centralizada. La solución propuesta es mejorar estos procesos para
-                        elevar la satisfacción del cliente mediante un sistema de help desk, reduciendo tiempos de
-                        respuesta y mejorando la resolución de incidentes.
+                    <h2 class="text-3xl font-bold mb-4 text-gray-800">Mejora en el proceso de Soporte al Cliente de la
+                        empresa ElectroTech</h2>
+                    <p class="text-lg text-gray-700 mb-4">
+                        <strong class="text-blue-600">Docente:</strong>
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Antonio Arqque Pantigozo</li>
+                    </ul>
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4">
+                        <strong class="text-blue-600">Estudiantes:</strong>
+                    <ul class="list-disc list-inside mt-2">
+                        <li>Mendoza Torres Jairo Daniel</li>
+                        <li>Alvarado Prieto Edson Emanuel</li>
+                        <li>Laura Rodriguez Diego Alonso</li>
+                        <li>Maldonado Vanegas Yhamir Alfredo</li>
+                    </ul>
                     </p>
                 </div>
             </section>
+
 
             <!-- Sección de Stakeholders -->
             <section id="stakeholders" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <h2 class="text-3xl font-bold mb-4">Stakeholders</h2>
-                    <ul class="list-disc pl-6 text-lg">
-                        <li><strong>Equipo de Soporte Técnico:</strong> Implementarán y usarán las nuevas herramientas.
-                        </li>
-                        <li><strong>Gerencia:</strong> Supervisarán y aprobarán el proyecto, alineándolo con los
-                            objetivos estratégicos.</li>
-                        <li><strong>Departamento de Ventas:</strong> Colaborarán para mejorar la experiencia del
-                            cliente.</li>
-                    </ul>
-                </div>
+                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                        <button onclick="toggleCollapse('stakeholders_internos')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Stakeholders Internos</span>
+                        </button>
+                        <div id="stakeholders_internos" class="collapse-content p-4 text-gray-700">
+                            <ul class="list-disc pl-6 text-lg">
+                                <li><strong>Equipo de Soporte Técnico:</strong> Implementan y utilizan las nuevas
+                                    herramientas y
+                                    procesos.
+                                    Interés: Beneficiarse de una mayor eficiencia y efectividad en sus tareas diarias,
+                                    reducción
+                                    de carga laboral y mejora en la resolución de casos.
+
+                                </li>
+                                <li><strong>Gerencia:</strong> Supervisan y aprueban el proyecto, asegurando la
+                                    asignación de
+                                    recursos y apoyo estratégico.
+                                    Interés: Garantizar que el proyecto se alinee con los objetivos generales de la
+                                    empresa y
+                                    que la inversión genere los beneficios esperados.
+                                </li>
+                                <li><strong>Departamento de Ventas:</strong> Colaborarán con el equipo de soporte para
+                                    garantizar que las mejoras en el servicio al cliente impacten positivamente en las
+                                    ventas.
+                                    Interés: Incrementar las ventas a través de una mejor satisfacción del cliente y
+                                    lealtad.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                        <button onclick="toggleCollapse('stakeholders_externos')"
+                            class="w-full text-left font-bold text-lg py-2">
+                            <span>Stakeholders Externos</span>
+                        </button>
+                        <div id="stakeholders_externos" class="collapse-content p-4 text-gray-700">
+                            <ul class="list-disc pl-6 text-lg">
+                                <li><strong>Clientes:</strong> Receptores finales del servicio de soporte.
+                                    Interés: Obtener un servicio de soporte eficiente y satisfactorio. Su satisfacción
+                                    es el objetivo principal del proyecto, ya que impacta directamente en la lealtad y
+                                    repetición de compras.
+                                </li>
+                                <li><strong>Competencia:</strong> Empresas competidoras en el mercado de
+                                    productos electrónicos.
+                                    Interés: Preocupada debido a la mejora en la eficiencia y satisfacción del cliente
+                                    de ElectroTech.
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
             </section>
 
             <!-- Sección de Caso de Negocio -->
@@ -88,7 +154,12 @@
                         negativamente la rentabilidad. La solución incluye la implementación de un manual de
                         procedimientos centralizado, capacitación del personal, y optimización de sistemas de soporte.
                     </p>
+                    <br>
+                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
+                    <iframe id="pdf-viewer" class="w-full h-96 border" src="CASO_DE_NEGOCIO_DE_PROYECTO.pdf"
+                        frameborder="0"></iframe>
                 </div>
+
             </section>
 
             <!-- Sección de Antecedentes -->
@@ -353,18 +424,58 @@
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <h2 class="text-3xl font-bold mb-4">Etapas del Proyecto</h2>
                     <ol class="list-decimal pl-6 text-lg">
-                        <li><strong>Inicio del Proyecto:</strong> Se define el propósito y alcance del proyecto.</li>
-                        <li><strong>Planificación:</strong> Se analizan los procesos actuales, se establecen objetivos
-                            claros y un plan detallado.</li>
-                        <li><strong>Ejecución:</strong> Se implementan las mejoras en los procesos de soporte y se
-                            capacita al personal.</li>
-                        <li><strong>Monitoreo y Control:</strong> Se utilizan KPIs para monitorear el progreso y ajustar
-                            el plan si es necesario.</li>
-                        <li><strong>Cierre del Proyecto:</strong> Se revisan los objetivos y se entregan formalmente los
-                            resultados a los stakeholders.</li>
+                        <li><strong>Inicio del Proyecto:</strong> En la fase inicial, se establece el propósito y
+                            alcance del proyecto, que es mejorar la eficiencia y efectividad del soporte al cliente. Se
+                            identifican las áreas problemáticas, como largos tiempos de respuesta o baja satisfacción
+                            del cliente. Se definen los objetivos del proyecto y se crean los documentos necesarios,
+                            como el acta de constitución del proyecto, que formaliza el inicio y asegura el respaldo de
+                            la alta dirección. Además, se identifican y se comunican con los stakeholders clave, como el
+                            personal de soporte y los directivos, para obtener su aprobación y asegurar que todos estén
+                            alineados con el objetivo del proyecto.</li>
+                        <li><strong>Planificación:</strong> Analizar los procesos de soporte actuales para identificar
+                            problemas. Establecer objetivos claros y medibles para la optimización. Crear un plan
+                            detallado con cronograma, presupuesto y recursos necesarios. Planificar la comunicación y la
+                            gestión de riesgos..</li>
+                        <li><strong>Ejecución:</strong> Implementar las mejoras en los procesos de soporte, como
+                            actualizar herramientas y procedimientos. Capacitar al personal en nuevas prácticas.
+                            Asegurar que los cambios se realicen según el plan y resolver problemas que surjan..</li>
+                        <li><strong>Monitoreo y Control:</strong> Seguir el progreso del proyecto usando indicadores
+                            clave de rendimiento (KPIs). Comparar el desempeño con los objetivos establecidos. Ajustar
+                            el plan según sea necesario y gestionar cualquier cambio o riesgo..</li>
+                        <li><strong>Cierre del Proyecto:</strong> Revisar que todos los objetivos y entregables estén
+                            completos. Documentar los resultados y lecciones aprendidas. Entregar formalmente los
+                            resultados a los stakeholders y cerrar el proyecto.</li>
                     </ol>
                 </div>
             </section>
+            <!--Acta de constitución-->
+            <section id="acta-constitucion" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-bold mb-4">Acta de Constitución</h2>
+                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
+                    <iframe id="pdf-viewer" class="w-full h-96 border" src="ACTA_DE_CONSTITUCION.pdf"
+                        frameborder="0"></iframe>
+                </div>
+            </section>
+            <!-- Sección de Interés sobre el Proyecto -->
+            <section id="interes" class="mb-12 p-6">
+                <div class="bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 p-6">
+                        <h2 class="text-3xl font-bold mb-4 text-gray-800">Interés sobre el Proyecto</h2>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Aquí se describe el interés y la relevancia del proyecto en el contexto actual.
+                            El objetivo es mejorar el proceso de soporte al cliente y optimizar la experiencia de
+                            usuario.
+                        </p>
+
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="interes-sobre-proyecto.png" alt="Interés sobre el Proyecto"
+                            class="rounded-lg object-cover w-full h-64 md:h-full" />
+                    </div>
+                </div>
+            </section>
+
             <!-- Sección de Registro de Interesados -->
             <section id="registro-interesados" class="mb-12">
                 <h2 class="text-3xl font-bold mb-4">Registro de Interesados</h2>
@@ -373,9 +484,11 @@
                     <table class="min-w-full bg-white border-collapse">
                         <thead>
                             <tr class="bg-blue-100">
-                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Stakeholder</th>
+                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Stakeholder
+                                </th>
                                 <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Evaluación</th>
-                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Clasificación</th>
+                                <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Clasificación
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -414,8 +527,10 @@
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <h2 class="text-3xl font-bold mb-4">Referencias</h2>
                     <ol class="list-decimal pl-6 text-lg">
-                        <li>Hernández, D. P., Ríos, S. L., & Yamamoto, S. A. (2021, 23 abril). Plan de Mejoramiento para
-                            la Optimización de las Operaciones de Soporte Técnico a Partir de la Implementación de una
+                        <li>Hernández, D. P., Ríos, S. L., & Yamamoto, S. A. (2021, 23 abril). Plan de Mejoramiento
+                            para
+                            la Optimización de las Operaciones de Soporte Técnico a Partir de la Implementación de
+                            una
                             Base
                             de Conocimientos en el Help Desk de la CUN.
                             <a href="https://repository.uniminuto.edu/handle/10656/12599" class="underline">
@@ -430,14 +545,17 @@
                             </a>
                         </li>
                         <li>
-                            Moposita, D. A., & Jordán, J. E. (2022). Chatbot una herramienta de atención al cliente en
-                            tiempos de COVID-19: un acercamiento teórico. Uniandes Episteme, 9(3), 327-350. Recuperado a
+                            Moposita, D. A., & Jordán, J. E. (2022). Chatbot una herramienta de atención al cliente
+                            en
+                            tiempos de COVID-19: un acercamiento teórico. Uniandes Episteme, 9(3), 327-350.
+                            Recuperado a
                             partir de <a href="https://revista.uniandes.edu.ec/ojs/index.php/EPISTEME/article/view/2481"
                                 class="underline">
                                 https://revista.uniandes.edu.ec/ojs/index.php/EPISTEME/article/view/2481
                             </a>
                         </li>
-                        <li> Pérez, V. (2023). Desarrollo del software chatbot para la gestión de niveles del servicio
+                        <li> Pérez, V. (2023). Desarrollo del software chatbot para la gestión de niveles del
+                            servicio
                             de la
                             unidad de servicios de atención al usuario del Ministerio de Educación.<a
                                 href="https://repositorio.unife.edu.pe/repositorio/handle/20.500.11955/1168"
@@ -445,7 +563,8 @@
                                 https://repositorio.unife.edu.pe/repositorio/handle/20.500.11955/1168
                             </a></li>
                         <li>
-                            Sofía, C. V. F. (2022, 15 julio). Optimización del Proceso de Gestión de Citas y Análisis
+                            Sofía, C. V. F. (2022, 15 julio). Optimización del Proceso de Gestión de Citas y
+                            Análisis
                             Clínicos en un Centro de Salud. <a
                                 href="https://repositorio.ucsm.edu.pe/items/db933841-2edd-4214-964e-21e225ac2330"
                                 class="underline">
@@ -462,6 +581,7 @@
         <p>© 2024 Tu Empresa. Todos los derechos reservados.</p>
     </footer>
     <script src="script.js"></script>
+
 </body>
 
 </html>
