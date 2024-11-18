@@ -76,6 +76,9 @@
                     <a href="#lista-hitos" class="block py-2 px-4">Lista de hitos</a>
                 </li>
                 <li class="hover:bg-blue-700">
+                    <a href="#ruta-critica" class="block py-2 px-4">Ruta Critica</a>
+                </li>
+                <li class="hover:bg-blue-700">
                     <a href="#project-cronograma" class="block py-2 px-4">Cronograma del proyecto</a>
                 </li>
                 <li class="hover:bg-blue-700">
@@ -829,54 +832,118 @@
                     <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
                     <iframe id="pdf-viewer" class="w-full h-96 border" src="Hitos.pdf" frameborder="0"></iframe>
                 </div>
-            </section>
+                <!--ruta critica-->
+                <section id="ruta-critica" class="mb-12">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-3xl font-bold mb-4">Ruta Crítica</h2>
+                        <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
+                        <iframe id="pdf-viewer" class="w-full h-96 border" src="ruta-critica-cropped.pdf"
+                            frameborder="0"></iframe>
+                        <div class="mt-6">
+                            <p class="text-gray-700">
+                                La ruta crítica representa la secuencia de actividades esenciales que determinan la
+                                duración total del proyecto. Estas actividades no tienen holgura, por lo que cualquier
+                                retraso en ellas afecta directamente la fecha final. En este proyecto, la ruta crítica
+                                incluye actividades desde la recopilación y validación de datos hasta la presentación
+                                final de resultados y recomendaciones. Estas actividades abarcan:
+                            </p>
+                            <ul class="list-disc ml-6 text-gray-700">
+                                <li><strong>Recopilación, validación y análisis de datos:</strong> Es la base del
+                                    proyecto, ya que garantiza que la información utilizada sea confiable y relevante
+                                    para el diseño del tablero.</li>
+                                <li><strong>Diseño y ajustes del tablero:</strong> Comprende la creación del prototipo,
+                                    los ajustes según el feedback de los interesados y la validación de las
+                                    visualizaciones.</li>
+                                <li><strong>Configuración e integración de Power BI:</strong> Asegura que el tablero
+                                    funcione con datos reales y precisos.</li>
+                                <li><strong>Validación y documentación de resultados:</strong> Incluye la evaluación del
+                                    desempeño del tablero, la elaboración del informe final y su revisión con el equipo.
+                                </li>
+                                <li><strong>Presentación final y cierre:</strong> Se realiza la entrega de resultados,
+                                    el análisis del feedback de los usuarios y la presentación de recomendaciones para
+                                    optimización.</li>
+                            </ul>
+                            <p class="text-gray-700 mt-4">
+                                Estas actividades son críticas porque forman una cadena de dependencias directas. El
+                                cumplimiento puntual de cada una es indispensable para garantizar el éxito del proyecto
+                                y su entrega en los plazos establecidos.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
-            <!--Cronograma de actividades-->
-            <section id="project-cronograma" class="mb-12">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Cronograma de actividades en Project
-                    </h2>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full border" style="height: 1145px;" src="cronograma.pdf"
-                        frameborder="0"></iframe>
-                </div>
-            </section>
 
-            <!-- Sección de Referencias -->
-            <section id="referencias" class="mb-12">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Referencias</h2>
-                    <ol class="list-decimal pl-6 text-lg">
-                        <li>Bogojevic, P. (2020). Project Management in Data Warehouse Implementations: A Literature
-                            Review. <em>IEEE Access</em>, 8, 225902-225934.
-                            <a href="https://doi.org/10.1109/access.2020.3045072"
-                                class="underline">https://doi.org/10.1109/access.2020.3045072</a>
-                        </li>
-                        <li>Gatto, D., Evangelista, J., Silva, R., & Sassi, R. (2023). Six Sigma methodology based on
-                            the PMBOK guide in the release management process in software developer enterprise.
-                            <em>Cuadernos de Educación y Desarrollo</em>.
-                            <a href="https://doi.org/10.55905/cuadv15n10-035"
-                                class="underline">https://doi.org/10.55905/cuadv15n10-035</a>
-                        </li>
-                        <li>Shcherbyna, O. (2023). SALES PERFORMANCE INDICATORS AT CONSTRUCTION COMPANIES. <em>Actual
-                                Problems of Economics</em>.
-                            <a href="https://doi.org/10.32752/1993-6788-2023-1-261-6-15"
-                                class="underline">https://doi.org/10.32752/1993-6788-2023-1-261-6-15</a>
-                        </li>
-                        <li>Chernysheva, M., Kalugina, M., Rogachev, D., & Nassif, O. (2023). Program and project
-                            management using PMBOK-6: general principles and features of healthcare system standard.
-                            <em>Tambov Medical Journal</em>.
-                            <a href="https://doi.org/10.20310/2782-5019-2023-5-2-51-57"
-                                class="underline">https://doi.org/10.20310/2782-5019-2023-5-2-51-57</a>
-                        </li>
-                        <li>Hristov, I., Chirico, A., & Camilli, R. (2022). The role of Key Performance Indicators as a
-                            performance management tool in implementing corporate strategies: A critical review of the
-                            literature. <em>FINANCIAL REPORTING</em>.
-                            <a href="https://doi.org/10.3280/fr2022-001004"
-                                class="underline">https://doi.org/10.3280/fr2022-001004</a>
-                        </li>
-                    </ol>
-                </div>
+                <!--Cronograma de actividades-->
+                <section id="project-cronograma" class="mb-12">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-3xl font-bold mb-4">Cronograma de actividades en Project</h2>
+                        <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
+                        <iframe id="pdf-viewer" class="w-full border" style="height: 1145px;" src="cronograma.pdf"
+                            frameborder="0"></iframe>
+                        <div class="mt-6">
+                            <h3 class="text-2xl font-semibold mb-4">Descripción del Cronograma de Actividades</h3>
+                            <p class="text-gray-700">
+                                El cronograma de actividades desarrollado en Project detalla de manera estructurada y
+                                visual las tareas,
+                                dependencias y duraciones involucradas en la ejecución del proyecto. Este cronograma
+                                permite:
+                            </p>
+                            <ul class="list-disc ml-6 text-gray-700">
+                                <li>Identificar claramente las actividades críticas y no críticas, optimizando los
+                                    tiempos de ejecución.</li>
+                                <li>Visualizar las dependencias entre tareas para garantizar una correcta coordinación.
+                                </li>
+                                <li>Monitorear el progreso del proyecto respecto a los plazos establecidos.</li>
+                                <li>Facilitar la planificación y toma de decisiones a través de herramientas de gestión
+                                    visual.</li>
+                            </ul>
+                            <p class="text-gray-700 mt-4">
+                                Este cronograma asegura un control eficiente del proyecto, estableciendo una hoja de
+                                ruta clara para cada fase.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección de Referencias -->
+                <section id="referencias" class="mb-12">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-3xl font-bold mb-4">Referencias</h2>
+                        <ol class="list-decimal pl-6 text-lg">
+                            <li>Bogojevic, P. (2020). Project Management in Data Warehouse Implementations: A Literature
+                                Review. <em>IEEE Access</em>, 8, 225902-225934.
+                                <a href="https://doi.org/10.1109/access.2020.3045072"
+                                    class="underline">https://doi.org/10.1109/access.2020.3045072</a>
+                            </li>
+                            <li>Gatto, D., Evangelista, J., Silva, R., & Sassi, R. (2023). Six Sigma methodology based
+                                on
+                                the PMBOK guide in the release management process in software developer enterprise.
+                                <em>Cuadernos de Educación y Desarrollo</em>.
+                                <a href="https://doi.org/10.55905/cuadv15n10-035"
+                                    class="underline">https://doi.org/10.55905/cuadv15n10-035</a>
+                            </li>
+                            <li>Shcherbyna, O. (2023). SALES PERFORMANCE INDICATORS AT CONSTRUCTION COMPANIES.
+                                <em>Actual
+                                    Problems of Economics</em>.
+                                <a href="https://doi.org/10.32752/1993-6788-2023-1-261-6-15"
+                                    class="underline">https://doi.org/10.32752/1993-6788-2023-1-261-6-15</a>
+                            </li>
+                            <li>Chernysheva, M., Kalugina, M., Rogachev, D., & Nassif, O. (2023). Program and project
+                                management using PMBOK-6: general principles and features of healthcare system standard.
+                                <em>Tambov Medical Journal</em>.
+                                <a href="https://doi.org/10.20310/2782-5019-2023-5-2-51-57"
+                                    class="underline">https://doi.org/10.20310/2782-5019-2023-5-2-51-57</a>
+                            </li>
+                            <li>Hristov, I., Chirico, A., & Camilli, R. (2022). The role of Key Performance Indicators
+                                as a
+                                performance management tool in implementing corporate strategies: A critical review of
+                                the
+                                literature. <em>FINANCIAL REPORTING</em>.
+                                <a href="https://doi.org/10.3280/fr2022-001004"
+                                    class="underline">https://doi.org/10.3280/fr2022-001004</a>
+                            </li>
+                        </ol>
+                    </div>
 
         </main>
     </div>
