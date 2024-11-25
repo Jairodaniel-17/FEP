@@ -365,6 +365,11 @@
                         del proyecto</a>
                 </li>
                 <li>
+                    <a href="#presupuesto-costos"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Presupuesto
+                        y costos</a>
+                </li>
+                <li>
                     <a href="#referencias"
                         class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Referencias</a>
                 </li>
@@ -1254,6 +1259,111 @@
                     </div>
                 </div>
             </section>
+            <!-- Sección de Presupuesto y Costos -->
+            <section id="presupuesto-costos" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Presupuesto y
+                        Costos</h2>
+
+                    <!-- Descripción general -->
+                    <p class="text-lg text-gray-700 mb-4">
+                        Este presupuesto incluye los costos estimados para la implementación del sistema, dividiéndose
+                        en
+                        <span class="font-bold text-blue-500">costos profesionales</span> y <span
+                            class="font-bold text-blue-500">costos operativos</span>.
+                        También se incluye un margen para contingencias.
+                    </p>
+
+                    <!-- Tabla de costos profesionales -->
+                    <h3 class="text-2xl font-semibold text-blue-600 mb-4">Costos Profesionales</h3>
+                    <table class="min-w-full bg-white border-collapse shadow-sm rounded-lg">
+                        <thead class="bg-blue-100">
+                            <tr>
+                                <th class="py-2 px-4 border text-left font-semibold text-white-800">Rol Profesional</th>
+                                <th class="py-2 px-4 border text-left font-semibold text-white-800">Tarifa por hora
+                                    (PEN)
+                                </th>
+                                <th class="py-2 px-4 border text-left font-semibold text-white-800">Horas estimadas</th>
+                                <th class="py-2 px-4 border text-left font-semibold text-white-800">Costo total (PEN)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border">Consultor estratégico</td>
+                                <td class="py-2 px-4 border">40</td>
+                                <td class="py-2 px-4 border">30</td>
+                                <td class="py-2 px-4 border">1,200</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border">Analista de datos</td>
+                                <td class="py-2 px-4 border">25</td>
+                                <td class="py-2 px-4 border">60</td>
+                                <td class="py-2 px-4 border">1,500</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border">Desarrollador BI</td>
+                                <td class="py-2 px-4 border">35</td>
+                                <td class="py-2 px-4 border">80</td>
+                                <td class="py-2 px-4 border">2,800</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border">Diseñador UX/UI</td>
+                                <td class="py-2 px-4 border">30</td>
+                                <td class="py-2 px-4 border">25</td>
+                                <td class="py-2 px-4 border">750</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border">Especialista en QA</td>
+                                <td class="py-2 px-4 border">20</td>
+                                <td class="py-2 px-4 border">20</td>
+                                <td class="py-2 px-4 border">400</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border">Capacitador técnico</td>
+                                <td class="py-2 px-4 border">25</td>
+                                <td class="py-2 px-4 border">15</td>
+                                <td class="py-2 px-4 border">375</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border">Jefe de proyecto</td>
+                                <td class="py-2 px-4 border">45</td>
+                                <td class="py-2 px-4 border">40</td>
+                                <td class="py-2 px-4 border">1,800</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border">Redactor técnico</td>
+                                <td class="py-2 px-4 border">20</td>
+                                <td class="py-2 px-4 border">20</td>
+                                <td class="py-2 px-4 border">400</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="text-lg font-bold text-gray-800 mt-4">Total costos profesionales: 9,225 PEN</p>
+
+                    <!-- Costos operativos -->
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-8 mb-4">Costos Operativos</h3>
+                    <ul class="list-disc list-inside mt-2 text-gray-700">
+                        <li>Licencias Power BI (5 usuarios, 1 año): <strong>3,000 PEN</strong></li>
+                        <li>Almacenamiento en la nube (100 GB/mes): <strong>480 PEN</strong></li>
+                        <li>Equipos adicionales (2 laptops para BI): <strong>6,400 PEN</strong></li>
+                        <li>Software adicional/imprevistos: <strong>2,000 PEN</strong></li>
+                    </ul>
+                    <p class="text-lg font-bold text-gray-800 mt-4">Total costos operativos: 11,880 PEN</p>
+
+                    <!-- Contingencias -->
+                    <p class="text-lg text-gray-700 mt-6">
+                        <strong>Margen de contingencia (10%):</strong> 2,510 PEN
+                    </p>
+
+                    <!-- Total general -->
+                    <p class="text-xl font-extrabold text-blue-800 mt-6">
+                        Total estimado del proyecto: <span class="text-green-600">23,615 PEN</span>
+                    </p>
+                </div>
+            </section>
+
             <!-- Sección de Referencias -->
             <section id="referencias" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-8">
