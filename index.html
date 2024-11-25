@@ -7,6 +7,7 @@
     <title>Implementación de indicadores de rendimiento en el área de la empresa Phymed</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         .collapse-content {
@@ -18,397 +19,600 @@
             height: 500px;
             border: 1px solid #ddd;
         }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            /* Ancho del scrollbar */
+        }
+
+        /* Track del scrollbar (fondo) */
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(to bottom, #1e3a8a, #2563eb);
+            border-radius: 8px;
+            /* Borde redondeado para el track */
+            animation: fadein 0.5s;
+        }
+
+        /* Thumb del scrollbar (deslizador) */
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #2563eb, #3b82f6);
+            border-radius: 8px;
+            border: 2px solid #1e3a8a;
+            /* Borde para destacar el thumb */
+        }
+
+        /* Thumb hover (cuando el usuario pasa el mouse) */
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #1d4ed8, #2563eb);
+            /* Cambia el gradiente al pasar el mouse */
+        }
+
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f9fbff, #eef3f9);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        h2,
+        h3 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background: linear-gradient(to bottom, #1e3a8a, #2563eb);
+            color: white;
+            width: 250px;
+            position: fixed;
+            height: 100vh;
+            padding: 20px 15px;
+            transition: all 0.3s ease-in-out;
+            overflow-y: auto;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav:hover {
+            width: 300px;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        nav a span {
+            margin-left: 10px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 250px;
+            padding: 20px 30px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .bg-white {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: #1d4ed8;
+            border-left: 5px solid #2563eb;
+            padding-left: 10px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table th,
+        table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            transition: background 0.3s ease-in-out;
+        }
+
+        table th {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9fbff;
+        }
+
+        table tr:hover {
+            background-color: #eaf2ff;
+        }
+
+        /* Footer Styling */
+        footer {
+            background: #1e40af;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            position: sticky;
+            bottom: 0;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #2563eb;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f1f5f9;
+        }
+
+        /* Buttons */
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            nav {
+                width: 60px;
+            }
+
+            nav:hover {
+                width: 250px;
+            }
+
+            nav a span {
+                display: none;
+            }
+
+            main {
+                margin-left: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                position: static;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                overflow-y: hidden;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 15px;
+            }
+
+            table,
+            table th,
+            table td {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+
+            section h2 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gradient-to-tr from-blue-50 via-gray-100 to-blue-100 text-gray-800 font-sans">
     <!-- Contenedor Principal -->
-    <div class="flex v-screen">
+    <div class="flex min-h-screen">
+
         <!-- Barra de Navegación Lateral -->
-        <nav class="w-64 bg-blue-900 text-white h-screen fixed">
-            <div class="p-6">
-                <h1 class="text-2xl font-bold">Phymed</h1>
+        <nav
+            class="w-64 bg-gradient-to-b from-blue-900 to-blue-700 text-white h-screen fixed shadow-lg overflow-y-auto">
+            <!-- Encabezado -->
+            <div class="p-6 border-b border-blue-600 text-center">
+                <h1 class="text-3xl font-extrabold tracking-wide text-white">Phymed</h1>
             </div>
-            <ul class="mt-6">
-                <li class="hover:bg-blue-700">
-                    <a href="#presentacion" class="block py-2 px-4">Presentación</a>
-                </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#presentacion-informacion" class="block py-2 px-4">Información de la empresa</a>
-                </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#analisis-alternativas" class="block py-2 px-4">Análisis de alternativas </a>
-                </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#stakeholders" class="block py-2 px-4">Stakeholders</a>
-                </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#matrizpoder" class="block py-2 px-4">Matriz de Poder-Interés</a>
-                </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#descripcion-estrategia" class="block py-2 px-4">Descripción de las Estrategias</a>
-                </li>
 
-                <li class="hover:bg-blue-700">
-                    <a href="#caso-negocio" class="block py-2 px-4">Caso de Negocio</a>
+            <!-- Lista de enlaces -->
+            <ul class="mt-4 space-y-1">
+                <li>
+                    <a href="#presentacion"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Presentación</a>
                 </li>
-
-                <li class="hover:bg-blue-700">
-                    <a href="#antecedentes" class="block py-2 px-4">Antecedentes</a>
+                <li>
+                    <a href="#presentacion-informacion"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Información
+                        de la empresa</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#etapas" class="block py-2 px-4">Etapas del Proyecto</a>
+                <li>
+                    <a href="#analisis-alternativas"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Análisis
+                        de alternativas</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#acta-constitucion" class="block py-2 px-4">Acta Constitución</a>
+                <li>
+                    <a href="#stakeholders"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Stakeholders</a>
                 </li>
-
-                <li class="hover:bg-blue-700">
-                    <a href="#factores-ambientales" class="block py-2 px-4">Factores Ambientales</a>
+                <li>
+                    <a href="#matrizpoder"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Matriz
+                        de Poder-Interés</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#edt" class="block py-2 px-4">Estructura de Desglose del Trabajo (EDT)</a>
+                <li>
+                    <a href="#descripcion-estrategia"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Descripción
+                        de las Estrategias</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#plan-direccion-proyecto" class="block py-2 px-4">Plan de Dirección del Proyecto</a>
+                <li>
+                    <a href="#caso-negocio"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Caso
+                        de Negocio</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#diagrama-red" class="block py-2 px-4">Diagrama de red de actividades</a>
+                <li>
+                    <a href="#antecedentes"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Antecedentes</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#lista-hitos" class="block py-2 px-4">Lista de hitos</a>
+                <li>
+                    <a href="#etapas"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Etapas
+                        del Proyecto</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#ruta-critica" class="block py-2 px-4">Ruta Critica</a>
+                <li>
+                    <a href="#acta-constitucion"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Acta
+                        Constitución</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#project-cronograma" class="block py-2 px-4">Cronograma del proyecto</a>
+                <li>
+                    <a href="#factores-ambientales"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Factores
+                        Ambientales</a>
                 </li>
-                <li class="hover:bg-blue-700">
-                    <a href="#referencias" class="block py-2 px-4">Referencias</a>
+                <li>
+                    <a href="#edt"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Estructura
+                        de Desglose del Trabajo (EDT)</a>
+                </li>
+                <li>
+                    <a href="#plan-direccion-proyecto"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Plan
+                        de Dirección del Proyecto</a>
+                </li>
+                <li>
+                    <a href="#diagrama-red"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Diagrama
+                        de red de actividades</a>
+                </li>
+                <li>
+                    <a href="#lista-hitos"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Lista
+                        de hitos</a>
+                </li>
+                <li>
+                    <a href="#ruta-critica"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Ruta
+                        Crítica</a>
+                </li>
+                <li>
+                    <a href="#project-cronograma"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Cronograma
+                        del proyecto</a>
+                </li>
+                <li>
+                    <a href="#referencias"
+                        class="block py-3 px-4 rounded-md hover:bg-blue-800 transition-all duration-200 ease-in-out">Referencias</a>
                 </li>
             </ul>
         </nav>
 
+
+
         <!-- Contenido Principal -->
         <main class="ml-64 p-6">
-
-            <!-- Sección de presentación -->
+            <!-- Sección de Presentación -->
             <section id="presentacion" class="mb-12 ">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4 text-gray-800">Implementación de indicadores de rendimiento en el
-                        área de la empresa Phymed</h2>
-                    <p class="text-lg text-gray-700 mb-4">
-                        <strong class="text-blue-600">Docente:</strong>
-                    <ul class="list-disc list-inside mt-2">
-                        <li>Antonio Arqque Pantigozo</li>
-                    </ul>
-                    </p>
-                    <p class="text-lg text-gray-700 mb-4">
-                        <strong class="text-blue-600">Estudiantes:</strong>
-                    <ul class="list-disc list-inside mt-2">
-                        <li>Mendoza Torres Jairo Daniel</li>
-                        <li>Alvarado Prieto Edson Emanuel</li>
-                        <li>Laura Rodriguez Diego Alonso</li>
-                        <li>Maldonado Vanegas Yhamir Alfredo</li>
-                    </ul>
-                    </p>
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        Implementación de Indicadores de Rendimiento en el Área de la Empresa Phymed
+                    </h2>
+                    <div class="mb-6">
+                        <p class="text-xl text-gray-800 font-medium">
+                            <span class="text-blue-600 font-semibold">Docente:</span>
+                        </p>
+                        <ul class="list-disc list-inside text-lg text-gray-700 mt-2 pl-4">
+                            <li>Antonio Arqque Pantigozo</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="text-xl text-gray-800 font-medium">
+                            <span class="text-blue-600 font-semibold">Estudiantes:</span>
+                        </p>
+                        <ul class="list-disc list-inside text-lg text-gray-700 mt-2 pl-4 space-y-2">
+                            <li>Mendoza Torres Jairo Daniel</li>
+                            <li>Alvarado Prieto Edson Emanuel</li>
+                            <li>Laura Rodriguez Diego Alonso</li>
+                            <li>Maldonado Vanegas Yhamir Alfredo</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
-            <!-- Sección de presentación de la empresa -->
+
+            <!-- Sección de Información de la Empresa -->
             <section id="presentacion-informacion" class="mb-12 ">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4 text-gray-800">Información general de Phymed S.R.L.
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        Información General de Phymed S.R.L.
                     </h2>
-
-                    <p class="text-lg text-gray-700 mb-4">
+                    <p class="text-lg text-gray-700 leading-relaxed">
                         Phymed S.R.L., fundada en 1996 y ubicada en Lima, Perú, se especializa en la comercialización de
                         equipos médicos y de rehabilitación. Su misión es ofrecer productos innovadores y de alta
-                        calidad al sector de la salud, con un enfoque en la atención médica y estética. Sus principales
-                        áreas de negocio incluyen la distribución de productos de rehabilitación física y dermatológica
-                        para clínicas, centros estéticos y profesionales de la salud. Además de la venta, ofrece
+                        calidad
+                        al sector de la salud, con un enfoque en la atención médica y estética.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">
+                        Sus principales áreas de negocio incluyen la distribución de productos de rehabilitación física
+                        y
+                        dermatológica para clínicas, centros estéticos y profesionales de la salud. Además de la venta,
+                        ofrece
                         servicios técnicos, proyectos integrales para espacios médicos, capacitación para usuarios de
-                        equipos y soporte técnico especializado.
+                        equipos y
+                        soporte técnico especializado.
                     </p>
                 </div>
             </section>
 
-            <!-- Sección de propuestas-->
+
+            <!-- Sección de propuestas -->
             <section id="analisis-alternativas" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Análisis de alternativas </h2>
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Análisis de
+                        Alternativas</h2>
 
                     <p class="text-lg text-gray-700 mb-4">
-                        <strong>Tablero de control de mando de ventas en Phymed</strong>
+                        <strong class="text-xl text-blue-500">Tablero de Control de Ventas en Phymed</strong>
                     </p>
                     <p class="text-lg text-gray-700 mb-4">
                         Implementación de un tablero de control en Power BI para monitorear y analizar los indicadores
-                        clave de
-                        rendimiento
-                        (KPIs) del área de ventas.</p>
+                        clave de rendimiento (KPIs) del área de ventas.
+                    </p>
+
                     <p class="text-lg text-gray-700 mb-4">
                         <strong>KPIs sugeridos:</strong>
                     </p>
-                    <ul class="list-disc list-inside mt-2">
-                        <li>Ingresos totales (mensuales, trimestrales, anuales) </li>
-                        <li>Crecimiento de ventas (% vs período anterior) </li>
-                        <li>Participación de mercado (%) </li>
-                        <li>Nuevos clientes / Retención de clientes (%) </li>
-                        <li>Valor promedio de venta </li>
+                    <ul class="list-disc list-inside mt-2 text-gray-700">
+                        <li>Ingresos totales (mensuales, trimestrales, anuales)</li>
+                        <li>Crecimiento de ventas (% vs período anterior)</li>
+                        <li>Participación de mercado (%)</li>
+                        <li>Nuevos clientes / Retención de clientes (%)</li>
+                        <li>Valor promedio de venta</li>
                     </ul>
+
                     <p class="text-lg text-gray-700 mb-4">
-                        <strong>Mapeo de procesos de ventas en Phymed</strong>
+                        <strong class="text-xl text-blue-500">Mapeo de Procesos de Ventas en Phymed</strong>
                     </p>
                     <p class="text-lg text-gray-700 mb-4">
                         Identificación y optimización de los procesos clave de ventas, desde la propuesta comercial
-                        hasta
-                        la postventa.
+                        hasta la postventa.
                     </p>
+
                     <p class="text-lg text-gray-700 mb-4">
                         <strong>Procesos a mapear:</strong>
                     </p>
-                    <ul class="list-disc list-inside mt-2">
-                        <li>Propuesta comercial </li>
-                        <li>Negociación y cierre de ventas </li>
-                        <li>Postventa y soporte al cliente </li>
-                        <li>Gestión de relaciones con clientes (CRM) </li>
+                    <ul class="list-disc list-inside mt-2 text-gray-700">
+                        <li>Propuesta comercial</li>
+                        <li>Negociación y cierre de ventas</li>
+                        <li>Postventa y soporte al cliente</li>
+                        <li>Gestión de relaciones con clientes (CRM)</li>
                         <li>Análisis del embudo de ventas</li>
                     </ul>
+
                     <br>
-                    <table class="min-w-full bg-white border-collapse">
+
+                    <!-- Tabla de comparación entre proyectos -->
+                    <table class="min-w-full bg-white border-collapse shadow-sm rounded-lg">
                         <thead class="bg-blue-100">
                             <tr>
-                                <th style="text-align:left" class="py-2 px-4 border border-gray-200 font-semibold">
-                                    Componentes </th>
-                                <th style="text-align:left">Proyecto Alternativo N° 1 (Implementación de KPIs)</th>
-                                <th style="text-align:left">Proyecto Alternativo N° 2 (Mapeo de Procesos)</th>
+                                <th class="py-2 px-4 border text-left font-semibold text-white">Componentes</th>
+                                <th class="py-2 px-4 border text-left font-semibold text-white">Proyecto Alternativo
+                                    N° 1 (Implementación de KPIs)</th>
+                                <th class="py-2 px-4 border text-left font-semibold text-white">Proyecto Alternativo
+                                    N° 2 (Mapeo de Procesos)</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-700">
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"
-                                    class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        1:
-                                        Capacitación del personal</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Capacitación
-                                    presencial (1)</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Capacitación
-                                    virtual (2)</td>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Componente 1: Capacitación del personal</strong>
+                                </td>
+                                <td class="py-2 px-4 border">- Capacitación presencial (1)</td>
+                                <td class="py-2 px-4 border">- Capacitación virtual (2)</td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        2: Procesos</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Desarrollar
-                                    procesos de ETL (1) - Implementación de KPIs
-                                    (1) - Análisis de
-                                    rendimiento (1)</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Mapeo de procesos
-                                    (2) - Asignación de funciones (2)</td>
+                                <td class="py-2 px-4 border"><strong>Componente 2: Procesos</strong></td>
+                                <td class="py-2 px-4 border">- Desarrollar procesos de ETL (1) - Implementación de KPIs
+                                    (1) - Análisis de rendimiento (1)</td>
+                                <td class="py-2 px-4 border">- Mapeo de procesos (2) - Asignación de funciones (2)</td>
                             </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        3: Mejora de infraestructura</strong>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Componente 3: Mejora de infraestructura</strong>
                                 </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Adquirir
-                                    herramientas para KPIs (1) - Migración de datos
-                                    para KPIs (1)
-                                </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Mejorar
-                                    infraestructura (2) - Alquilar o comprar equipo
+                                <td class="py-2 px-4 border">- Adquirir herramientas para KPIs (1) - Migración de datos
+                                    para KPIs (1)</td>
+                                <td class="py-2 px-4 border">- Mejorar infraestructura (2) - Alquilar o comprar equipo
                                     (2)</td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        4: Análisis y Reportes</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Crear reportes
-                                    periódicos de KPIs (1) - Crear reporte
-                                    automático de KPI
-                                    (1)
+                                <td class="py-2 px-4 border"><strong>Componente 4: Análisis y Reportes</strong></td>
+                                <td class="py-2 px-4 border">- Crear reportes periódicos de KPIs (1) - Crear reporte
+                                    automático de KPI (1)</td>
+                                <td class="py-2 px-4 border">- Documentar procesos mapeados (2)</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Componente 5: Comunicación y Colaboración</strong>
                                 </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Documentar
-                                    procesos mapeados (2)</td>
+                                <td class="py-2 px-4 border">- Plataforma para compartir resultados (1)</td>
+                                <td class="py-2 px-4 border">- Espacios de colaboración para el equipo (2)</td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        5: Comunicación y Colaboración</strong>
-                                </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Plataforma para
-                                    compartir resultados (1)</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Espacios de
-                                    colaboración para el equipo (2)</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        6: Evaluación y
+                                <td class="py-2 px-4 border"><strong>Componente 6: Evaluación y
                                         Retroalimentación</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Revisión de KPIs
-                                    y ajustes basados en resultados (1)</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Evaluación de
-                                    efectividad de procesos (2)</td>
+                                <td class="py-2 px-4 border">- Revisión de KPIs y ajustes basados en resultados (1)</td>
+                                <td class="py-2 px-4 border">- Evaluación de efectividad de procesos (2)</td>
                             </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        7: Gestión del Cambio</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Plan de gestión
-                                    del cambio para implementación de KPIs (1)
-                                </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Gestión del
-                                    cambio en la adopción de nuevos procesos (2)
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Componente 7: Gestión del Cambio</strong></td>
+                                <td class="py-2 px-4 border">- Plan de gestión del cambio para implementación de KPIs
+                                    (1)</td>
+                                <td class="py-2 px-4 border">- Gestión del cambio en la adopción de nuevos procesos (2)
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Componente
-                                        8: Seguridad y Cumplimiento</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Asegurar
-                                    cumplimiento de normativas en la recolección de
+                                <td class="py-2 px-4 border"><strong>Componente 8: Seguridad y Cumplimiento</strong>
+                                </td>
+                                <td class="py-2 px-4 border">- Asegurar cumplimiento de normativas en la recolección de
                                     datos (1)</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">- Cumplimiento de
-                                    normas en procesos internos (2)</td>
+                                <td class="py-2 px-4 border">- Cumplimiento de normas en procesos internos (2)</td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
+
+                    <!-- Escala de evaluación -->
                     <p class="text-lg text-gray-700 mb-4">
-                        <strong>Nota:</strong> La escala de evaluación es la siguiente: Alto (1), Medio (2), Bajo (3).
-                        <br>
-                    <table class="min-w-full bg-white border-collapse">
+                        <strong>Nota:</strong> La escala de evaluación es la siguiente:
+                        <span class="font-semibold text-blue-500">Alto (1), Medio (2), Bajo (3)</span>.
+                    </p>
+
+                    <!-- Tabla de criterios -->
+                    <table class="min-w-full bg-white border-collapse shadow-sm rounded-lg">
                         <thead class="bg-blue-100">
                             <tr>
-                                <th style="text-align:center"><strong>Criterios</strong></th>
-                                <th style="text-align:center"><strong>Descripción</strong></th>
-                                <th style="text-align:center"><strong>Escala</strong></th>
-                                <th></th>
+                                <th class="py-2 px-4 border text-center font-semibold text-white">Criterios</th>
+                                <th class="py-2 px-4 border text-center font-semibold text-white">Descripción</th>
+                                <th class="py-2 px-4 border text-center font-semibold text-white">Escala</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Viabilidad
-                                        técnica</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Capacidad de
-                                    implementar el proyecto</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Alto (3), Medio
-                                    (2), Bajo (1)</td>
-                                <td></td>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Viabilidad técnica</strong></td>
+                                <td class="py-2 px-4 border">Evaluación de la capacidad técnica para implementar el
+                                    proyecto con los recursos disponibles</td>
+                                <td class="py-2 px-4 border text-center">Alto (1), Medio (2), Bajo (3)</td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">
-                                    <strong>Costos</strong>
-                                </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Análisis del costo
-                                    total y retorno esperado</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Alto (1), Bajo (2)
-                                </td>
-                                <td></td>
+                                <td class="py-2 px-4 border"><strong>Costos</strong></td>
+                                <td class="py-2 px-4 border">Estimación de los costos totales para cada alternativa,
+                                    considerando tanto los gastos iniciales como los recurrentes</td>
+                                <td class="py-2 px-4 border text-center">Alto (1), Bajo (2)</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Tiempo</strong></td>
+                                <td class="py-2 px-4 border">Evaluación del tiempo requerido para la implementación de
+                                    cada alternativa, desde el inicio hasta la finalización</td>
+                                <td class="py-2 px-4 border text-center">Tiempo largo (> 5 meses)</td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">
-                                    <strong>Tiempo</strong>
-                                </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Duración del
-                                    proyecto</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Totalmente original
-                                    (3), Parcialmente original (2), No es
-                                    original (1)</td>
-                                <td></td>
+                                <td class="py-2 px-4 border"><strong>Impacto en los procesos</strong></td>
+                                <td class="py-2 px-4 border">Grado de impacto que cada proyecto tiene en la optimización
+                                    o mejora de los procesos internos</td>
+                                <td class="py-2 px-4 border text-center">Alto (1), Medio (2), Bajo (3)</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border"><strong>Adopción de cambios</strong></td>
+                                <td class="py-2 px-4 border">Facilidad con la que el equipo podrá adoptar los cambios
+                                    que cada proyecto implicará</td>
+                                <td class="py-2 px-4 border text-center">Alto (1), Medio (2), Bajo (3)</td>
                             </tr>
                             <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Impacto
-                                        social</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Beneficios para la
-                                    comunidad y empleados</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Alto (3), Medio
-                                    (2), Bajo (1)</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">
-                                    <strong>Sostenibilidad</strong>
-                                </td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Capacidad de
-                                    mantener los beneficios a largo plazo</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Alto (3), Medio
-                                    (2), Bajo (1)</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200"><strong>Vigencia
-                                        tecnológica</strong></td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Relevancia de la
-                                    tecnología utilizada</td>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Alto (3), Medio
-                                    (2), Bajo (1)</td>
+                                <td class="py-2 px-4 border"><strong>Escalabilidad</strong></td>
+                                <td class="py-2 px-4 border">Posibilidad de ampliar la solución en el futuro para
+                                    adaptarse al crecimiento de la empresa</td>
+                                <td class="py-2 px-4 border text-center">Alto (1), Medio (2), Bajo (3)</td>
                             </tr>
                         </tbody>
                     </table>
+
                     <br>
-                    <p class="text-lg text-gray-700 mb-4">
-                        <strong>Resumen</strong>
-                    </p>
-                    <table class="min-w-full bg-white border-collapse">
-                        <thead class="bg-blue-100">
-                            <tr>
-                                <th style="text-align:center">Componentes</th>
-                                <th style="text-align:center">Proyecto Alternativo N° 1 (Implementación de KPIs)</th>
-                                <th style="text-align:center">Proyecto Alternativo N° 2 (Mapeo de Procesos)</th>
-                            </tr>
-                        </thead>
-                        <tbody class=" border-collapse text-gray-700">
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Viabilidad técnica
-                                </td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">3</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">2</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Costos</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">1</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">2</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Tiempo</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">3</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">2</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Impacto social</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">3</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">2</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Sostenibilidad</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">3</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">2</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Vigencia
-                                    tecnológica</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">3</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">2</td>
-                            </tr>
-                            <tr>
-                                <td style="text-align:left" class="py-2 px-4 border border-gray-200">Total</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">16</td>
-                                <td style="text-align:center" class="py-2 px-4 border border-gray-200">12</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="bg-white rounded-lg shadow-lg p-6 mt-6">
-                        <h2 class="text-2xl font-bold mb-4"><strong>Análisis</strong></h2>
-                        <ul class="list-disc list-inside mt-2">
-                            <li class="mb-2">
-                                <strong>Proyecto Alternativo N° 1 (Implementación de KPIs)</strong> tiene un puntaje
-                                total
-                                de
-                                <strong>16</strong>, indicando una evaluación más favorable en comparación con el
-                                <strong>Proyecto
-                                    Alternativo
-                                    N° 2 (Mapeo de Procesos)</strong>, que obtuvo <strong>12</strong>.
-                            </li>
-                            <li class="mb-2">Esta evaluación sugiere que la implementación de KPIs puede ser más viable
-                                y beneficiosa
-                                para la empresa en
-                                función de los criterios establecidos.</li>
-                        </ul>
+
+                    <!-- Resumen de recomendaciones -->
+                    <div class="p-4 bg-gray-100 rounded-lg shadow-sm">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Recomendaciones</h3>
+                        <p class="text-lg text-gray-700">
+                            Tras evaluar los criterios y la comparación de proyectos, se recomienda proceder con el
+                            <span class="font-bold text-blue-500">Proyecto Alternativo N° 1</span>, dado que se alinea
+                            mejor con los objetivos de la empresa en términos de viabilidad técnica, costo y tiempo de
+                            implementación.
+                        </p>
+                        <p class="text-lg text-gray-700 mt-4">
+                            Sin embargo, se sugiere considerar el <span class="font-bold text-blue-500">Proyecto
+                                Alternativo N° 2</span> en una fase posterior, para asegurar una optimización completa
+                            de los procesos internos a medida que la empresa crezca.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -416,553 +620,720 @@
             <!-- Sección de Stakeholders -->
             <section id="stakeholders" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Stakeholders</h2>
-                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Stakeholders
+                    </h2>
+
+                    <!-- Stakeholders Internos -->
+                    <div class="bg-white rounded-lg shadow-md mb-6">
                         <button onclick="toggleCollapse('stakeholders_internos')"
-                            class="w-full text-left font-bold text-lg py-2">
+                            class="w-full text-left font-semibold text-lg py-3 px-4 bg-blue-100 hover:bg-blue-200 rounded-t-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <span>Stakeholders Internos</span>
                         </button>
-                        <div id="stakeholders_internos" class="collapse-content p-4 text-gray-700">
-                            <ul class="list-disc pl-6 text-lg">
+                        <div id="stakeholders_internos" class="collapse-content p-4 text-gray-700 hidden">
+                            <ul class="list-disc pl-6 space-y-2 text-lg">
                                 <li><strong>Gerencia:</strong> Toma decisiones estratégicas y autoriza cambios
-                                    importantes en la gestión de
-                                    ventas.
-                                </li>
+                                    importantes en la gestión de ventas.</li>
                                 <li><strong>Ventas:</strong> Ejecuta el proceso de comercialización y mantiene
-                                    relaciones con los clientes.
-                                </li>
+                                    relaciones con los clientes.</li>
                                 <li><strong>Contabilidad:</strong> Maneja los ingresos derivados de las ventas y asegura
-                                    la correcta gestión
-                                    financiera. </li>
+                                    la correcta gestión financiera.</li>
                                 <li><strong>Logística:</strong> Coordina la entrega de productos a los clientes,
-                                    garantizando que el proceso se
-                                    realice sin inconvenientes. </li>
+                                    garantizando que el proceso se realice sin inconvenientes.</li>
                                 <li><strong>Servicio Técnico:</strong> Ofrece soporte y mantenimiento de los equipos
-                                    vendidos. </li>
+                                    vendidos.</li>
                                 <li><strong>Marketing:</strong> Desarrolla estrategias para posicionar los productos y
-                                    atraer a nuevos clientes.
-                                </li>
+                                    atraer a nuevos clientes.</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+
+                    <!-- Stakeholders Externos -->
+                    <div class="bg-white rounded-lg shadow-md">
                         <button onclick="toggleCollapse('stakeholders_externos')"
-                            class="w-full text-left font-bold text-lg py-2">
+                            class="w-full text-left font-semibold text-lg py-3 px-4 bg-blue-100 hover:bg-blue-200 rounded-t-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <span>Stakeholders Externos</span>
                         </button>
-                        <div id="stakeholders_externos" class="collapse-content p-4 text-gray-700">
-                            <ul class="list-disc pl-6 text-lg">
+                        <div id="stakeholders_externos" class="collapse-content p-4 text-gray-700 hidden">
+                            <ul class="list-disc pl-6 space-y-2 text-lg">
                                 <li><strong>Clientes:</strong> Clínicas, centros estéticos y profesionales de la salud
-                                    que utilizan los
-                                    productos de
-                                    Phymed. </li>
+                                    que utilizan los productos de Phymed.</li>
                                 <li><strong>Proveedores de Equipos Médicos:</strong> Marcas internacionales que
-                                    suministran productos a Phymed.
-                                </li>
+                                    suministran productos a Phymed.</li>
                             </ul>
                         </div>
                     </div>
+                </div>
             </section>
-            <!-- Matriz de poder interes -->
+
+            <script>
+                // Función para alternar el colapso de las secciones
+                function toggleCollapse(id) {
+                    var content = document.getElementById(id);
+                    content.classList.toggle('hidden');
+                }
+            </script>
+            <!-- Matriz de poder interés -->
             <section id="matrizpoder" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Matriz de Poder-Interés para los Stakeholders del Proyecto de
-                        Implementación de KPIs en Phymed S.R.L.
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        Matriz de Poder-Interés para los Stakeholders del Proyecto de Implementación de KPIs en Phymed
+                        S.R.L.
                     </h2>
-                    <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="bg-white rounded-lg shadow-md p-6 overflow-x-auto">
                         <table class="min-w-full bg-white border-collapse">
                             <thead>
                                 <tr class="bg-blue-100">
-                                    <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Stakeholder
-                                    </th>
-                                    <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Nivel de Poder
-                                    </th>
-                                    <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Nivel de
-                                        Interés</th>
-                                    <th class="py-2 px-4 border border-gray-200 text-left font-semibold">Estrategia de
-                                        Gestión</th>
+                                    <th class="py-3 px-6 border border-gray-200 text-left font-semibold text-white">
+                                        Stakeholder</th>
+                                    <th class="py-3 px-6 border border-gray-200 text-left font-semibold text-white">
+                                        Nivel de Poder</th>
+                                    <th class="py-3 px-6 border border-gray-200 text-left font-semibold text-white">
+                                        Nivel de Interés</th>
+                                    <th class="py-3 px-6 border border-gray-200 text-left font-semibold text-white">
+                                        Estrategia de Gestión</th>
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Gerencia</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Alto</td>
-                                    <td class="py-2 px-4 border border-gray-200">Alto</td>
-                                    <td class="py-2 px-4 border border-gray-200">Colaborar estrechamente. Involucrar
-                                        directamente en decisiones estratégicas y
-                                        mantener informado
-                                        regularmente.</td>
+                                <!-- Fila 1 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Gerencia</td>
+                                    <td class="py-3 px-6 border border-gray-200">Alto</td>
+                                    <td class="py-3 px-6 border border-gray-200">Alto</td>
+                                    <td class="py-3 px-6 border border-gray-200">Colaborar estrechamente. Involucrar
+                                        directamente en decisiones estratégicas y mantener informado regularmente.</td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Ventas</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Alto</td>
-                                    <td class="py-2 px-4 border border-gray-200">Alto</td>
-                                    <td class="py-2 px-4 border border-gray-200">Colaborar y consultar activamente.
-                                        Capacitación intensiva en KPIs, mantener
-                                        informado sobre impactos
-                                        directos en su trabajo.</td>
+                                <!-- Fila 2 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Ventas</td>
+                                    <td class="py-3 px-6 border border-gray-200">Alto</td>
+                                    <td class="py-3 px-6 border border-gray-200">Alto</td>
+                                    <td class="py-3 px-6 border border-gray-200">Colaborar y consultar activamente.
+                                        Capacitación intensiva en KPIs, mantener informado sobre impactos directos en su
+                                        trabajo.</td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Contabilidad</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Medio</td>
-                                    <td class="py-2 px-4 border border-gray-200">Medio</td>
-                                    <td class="py-2 px-4 border border-gray-200">Mantener informado. Proveer información
-                                        relevante para ajustar las finanzas en
-                                        función de los
-                                        resultados
-                                        de las ventas.</td>
+                                <!-- Fila 3 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Contabilidad</td>
+                                    <td class="py-3 px-6 border border-gray-200">Medio</td>
+                                    <td class="py-3 px-6 border border-gray-200">Medio</td>
+                                    <td class="py-3 px-6 border border-gray-200">Mantener informado. Proveer información
+                                        relevante para ajustar las finanzas en función de los resultados de las ventas.
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Logística</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Bajo</td>
-                                    <td class="py-2 px-4 border border-gray-200">Medio</td>
-                                    <td class="py-2 px-4 border border-gray-200">Monitorear y mantener informado sobre
-                                        cómo los KPIs de ventas pueden afectar las
-                                        entregas y procesos
-                                        de
-                                        distribución.</td>
+                                <!-- Fila 4 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Logística</td>
+                                    <td class="py-3 px-6 border border-gray-200">Bajo</td>
+                                    <td class="py-3 px-6 border border-gray-200">Medio</td>
+                                    <td class="py-3 px-6 border border-gray-200">Monitorear y mantener informado sobre
+                                        cómo los KPIs de ventas pueden afectar las entregas y procesos de distribución.
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Servicio Técnico</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Bajo</td>
-                                    <td class="py-2 px-4 border border-gray-200">Bajo</td>
-                                    <td class="py-2 px-4 border border-gray-200">Informar ocasionalmente. Mantener
-                                        informado sobre el impacto de ventas en las
-                                        solicitudes de soporte
-                                        y
+                                <!-- Fila 5 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Servicio Técnico</td>
+                                    <td class="py-3 px-6 border border-gray-200">Bajo</td>
+                                    <td class="py-3 px-6 border border-gray-200">Bajo</td>
+                                    <td class="py-3 px-6 border border-gray-200">Informar ocasionalmente. Mantener
+                                        informado sobre el impacto de ventas en las solicitudes de soporte y
                                         mantenimiento.</td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Marketing</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Medio</td>
-                                    <td class="py-2 px-4 border border-gray-200">Alto</td>
-                                    <td class="py-2 px-4 border border-gray-200">Consultar y colaborar en la
-                                        planificación de estrategias de marketing alineadas
-                                        con
-                                        los resultados
-                                        de
+                                <!-- Fila 6 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Marketing</td>
+                                    <td class="py-3 px-6 border border-gray-200">Medio</td>
+                                    <td class="py-3 px-6 border border-gray-200">Alto</td>
+                                    <td class="py-3 px-6 border border-gray-200">Consultar y colaborar en la
+                                        planificación de estrategias de marketing alineadas con los resultados de
                                         ventas.</td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Clientes
-                                            (Clínicas/Centros)</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Medio</td>
-                                    <td class="py-2 px-4 border border-gray-200">Alto</td>
-                                    <td class="py-2 px-4 border border-gray-200">Mantener satisfecho. Monitorear y
-                                        mejorar la satisfacción a través del
-                                        seguimiento
-                                        postventa y
-                                        fidelización.</td>
+                                <!-- Fila 7 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Clientes
+                                        (Clínicas/Centros)</td>
+                                    <td class="py-3 px-6 border border-gray-200">Medio</td>
+                                    <td class="py-3 px-6 border border-gray-200">Alto</td>
+                                    <td class="py-3 px-6 border border-gray-200">Mantener satisfecho. Monitorear y
+                                        mejorar la satisfacción a través del seguimiento postventa y fidelización.</td>
                                 </tr>
-                                <tr>
-                                    <td class="py-2 px-4 border border-gray-200"><strong>Proveedores de Equipos
-                                            Médicos</strong></td>
-                                    <td class="py-2 px-4 border border-gray-200">Medio</td>
-                                    <td class="py-2 px-4 border border-gray-200">Bajo</td>
-                                    <td class="py-2 px-4 border border-gray-200">Informar ocasionalmente sobre el
-                                        crecimiento de ventas y posibles oportunidades
-                                        de
-                                        expansión de
-                                        productos.</td>
+                                <!-- Fila 8 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-6 border border-gray-200 font-semibold">Proveedores de Equipos
+                                        Médicos</td>
+                                    <td class="py-3 px-6 border border-gray-200">Medio</td>
+                                    <td class="py-3 px-6 border border-gray-200">Bajo</td>
+                                    <td class="py-3 px-6 border border-gray-200">Informar ocasionalmente sobre el
+                                        crecimiento de ventas y posibles oportunidades de expansión de productos.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </section>
-            <!-- seccion de estrategia-->
+            <!-- Sección de Estrategia -->
             <section id="descripcion-estrategia" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4"><strong>Descripción de las Estrategias</strong></h2>
-                    <ol>
-                        <li><strong>Colaborar Estrechamente (Alto poder - Alto interés):</strong> Stakeholders que deben
-                            estar
-                            involucrados
-                            de manera constante en las decisiones clave del proyecto, debido a su influencia y alta
-                            participación en el
-                            resultado. <br> Decisión: <strong>Gerencia</strong> y <strong>Ventas</strong>. </li>
-                        <li><strong>Mantener Satisfecho (Alto poder - Bajo interés):</strong> Stakeholders que tienen un
-                            nivel de poder
-                            significativo, pero no necesitan estar involucrados en todas las decisiones. Se les debe
-                            mantener informados
-                            para asegurar su satisfacción. <br> Decisión: <strong>Clientes</strong> y
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        <strong>Descripción de las Estrategias</strong>
+                    </h2>
+                    <ol class="list-decimal pl-6 space-y-4 text-gray-700">
+                        <!-- Estrategia 1 -->
+                        <li>
+                            <strong>Colaborar Estrechamente (Alto poder - Alto interés):</strong>
+                            Stakeholders que deben estar involucrados de manera constante en las decisiones clave del
+                            proyecto, debido a su influencia y alta participación en el resultado.
+                            <br>
+                            <span class="font-semibold text-gray-800">Decisión:</span> <strong>Gerencia</strong> y
+                            <strong>Ventas</strong>.
+                        </li>
+                        <!-- Estrategia 2 -->
+                        <li>
+                            <strong>Mantener Satisfecho (Alto poder - Bajo interés):</strong>
+                            Stakeholders que tienen un nivel de poder significativo, pero no necesitan estar
+                            involucrados en todas las decisiones. Se les debe mantener informados para asegurar su
+                            satisfacción.
+                            <br>
+                            <span class="font-semibold text-gray-800">Decisión:</span> <strong>Clientes</strong> y
                             <strong>Proveedores</strong>.
                         </li>
-                        <li><strong>Mantener Informado (Medio poder - Medio/Alto interés):</strong> Stakeholders que
-                            necesitan ser
-                            actualizados regularmente sobre el progreso del proyecto, ya que su trabajo se verá afectado
-                            indirectamente.
-                            <br> Decisión: <strong>Contabilidad</strong> y <strong>Marketing</strong>.
+                        <!-- Estrategia 3 -->
+                        <li>
+                            <strong>Mantener Informado (Medio poder - Medio/Alto interés):</strong>
+                            Stakeholders que necesitan ser actualizados regularmente sobre el progreso del proyecto, ya
+                            que su trabajo se verá afectado indirectamente.
+                            <br>
+                            <span class="font-semibold text-gray-800">Decisión:</span> <strong>Contabilidad</strong> y
+                            <strong>Marketing</strong>.
                         </li>
-                        <li><strong>Monitorear (Bajo poder - Bajo interés):</strong> Stakeholders que no tienen una
-                            influencia directa
-                            ni un
-                            interés activo, pero deben estar informados sobre el impacto a largo plazo. <br> Decisión:
-                            <strong>Servicio
+                        <!-- Estrategia 4 -->
+                        <li>
+                            <strong>Monitorear (Bajo poder - Bajo interés):</strong>
+                            Stakeholders que no tienen una influencia directa ni un interés activo, pero deben estar
+                            informados sobre el impacto a largo plazo.
+                            <br>
+                            <span class="font-semibold text-gray-800">Decisión:</span> <strong>Servicio
                                 Técnico</strong>.
                         </li>
                     </ol>
                 </div>
             </section>
+
             <!-- Sección de Caso de Negocio -->
             <section id="caso-negocio" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Caso de Negocio</h2>
-                    <p class="text-lg">
-                        Actualmente, el servicio al cliente de ElectroTech presenta deficiencias, lo que afecta
-                        negativamente la rentabilidad. La solución incluye la implementación de un manual de
-                        procedimientos centralizado, capacitación del personal, y optimización de sistemas de soporte.
-                    </p>
-                    <br>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full h-96 border" src="CASO_DE_NEGOCIO_DE_PROYECTO.pdf"
-                        frameborder="0"></iframe>
-                </div>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        <strong>Caso de Negocio</strong>
+                    </h2>
 
+                    <!-- Descripción del caso de negocio -->
+                    <p class="text-lg text-gray-700 mb-6">
+                        Actualmente, el servicio al cliente de <strong>ElectroTech</strong> presenta deficiencias, lo
+                        que afecta
+                        negativamente la rentabilidad. La solución incluye la implementación de un manual de
+                        procedimientos
+                        centralizado, capacitación del personal, y optimización de sistemas de soporte.
+                    </p>
+
+                    <!-- Título para el visualizador de PDF -->
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h3>
+
+                    <!-- Contenedor del iframe con bordes redondeados -->
+                    <div class="overflow-hidden rounded-lg shadow-lg">
+                        <iframe id="pdf-viewer" class="w-full h-96 border-0" src="CASO_DE_NEGOCIO_DE_PROYECTO.pdf"
+                            frameborder="0"></iframe>
+                    </div>
+                </div>
             </section>
 
             <!-- Sección de Antecedentes -->
             <section id="antecedentes" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
 
-                    <h2 class="text-3xl font-bold mb-4">Antecedentes</h2>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        <strong>Antecedentes</strong>
+                    </h2>
 
-                    <!-- Antecedente 1 -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
-                        <button onclick="toggleCollapse('antecedente1')"
-                            class="w-full text-left font-bold text-lg py-2">
-                            <span>Antecedente 1: Project Management in Data Warehouse Implementations: A Literature
-                                Review</span>
-                        </button>
-                        <div id="antecedente1" class="collapse-content p-4 text-gray-700">
-                            <p>
-                                Este estudio
-                                examina la
-                                gestión de proyectos en implementaciones de data warehouses utilizando el marco de
-                                referencia de PMBOK.
-                                Proporciona
-                                un mapa de referencia para los gerentes de proyectos que puede aplicarse para mejorar la
-                                integración de
-                                indicadores
-                                clave de rendimiento (KPIs) en proyectos complejos, como los de ventas, facilitando la
-                                planificación y control
-                                eficiente de los recursos. (Bogojevic, 2020).<br>
-                            </p>
+                    <!-- Antecedentes individuales -->
+                    <div class="space-y-4">
+                        <!-- Antecedente 1 -->
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <button onclick="toggleCollapse('antecedente1')"
+                                class="w-full text-left font-semibold text-lg py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300">
+                                <span>Antecedente 1: Project Management in Data Warehouse Implementations: A Literature
+                                    Review</span>
+                            </button>
+                            <div id="antecedente1" class="collapse-content p-4 text-gray-700 mt-2">
+                                <p>
+                                    Este estudio examina la gestión de proyectos en implementaciones de data warehouses
+                                    utilizando el marco de referencia de PMBOK. Proporciona un mapa de referencia para
+                                    los gerentes de proyectos que puede aplicarse para mejorar la integración de
+                                    indicadores clave de rendimiento (KPIs) en proyectos complejos, como los de ventas,
+                                    facilitando la planificación y control eficiente de los recursos. (Bogojevic, 2020).
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Antecedente 2 -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
-                        <button onclick="toggleCollapse('antecedente2')"
-                            class="w-full text-left font-bold text-lg py-2">
-                            <span>Antecedente 2: Six Sigma Methodology Based on the PMBOK Guide in the Release
-                                Management Process</span>
-                        </button>
-                        <div id="antecedente2" class="collapse-content p-4 text-gray-700">
-                            <p>
-                                Este
-                                artículo
-                                analiza la implementación de la metodología Six Sigma basada en PMBOK para mejorar
-                                procesos de gestión y
-                                liberación
-                                de software. Se destaca cómo PMBOK puede ser una guía útil para mejorar los procesos y
-                                KPIs, optimizando la
-                                calidad
-                                y eficiencia, que es aplicable a la implementación de KPIs en ventas. (Gatto et al.,
-                                2023).
-                            </p>
+                        <!-- Antecedente 2 -->
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <button onclick="toggleCollapse('antecedente2')"
+                                class="w-full text-left font-semibold text-lg py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300">
+                                <span>Antecedente 2: Six Sigma Methodology Based on the PMBOK Guide in the Release
+                                    Management Process</span>
+                            </button>
+                            <div id="antecedente2" class="collapse-content p-4 text-gray-700 mt-2">
+                                <p>
+                                    Este artículo analiza la implementación de la metodología Six Sigma basada en PMBOK
+                                    para mejorar procesos de gestión y liberación de software. Se destaca cómo PMBOK
+                                    puede ser una guía útil para mejorar los procesos y KPIs, optimizando la calidad y
+                                    eficiencia, que es aplicable a la implementación de KPIs en ventas. (Gatto et al.,
+                                    2023).
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Antecedente 3 -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
-                        <button onclick="toggleCollapse('antecedente3')"
-                            class="w-full text-left font-bold text-lg py-2">
-                            <span>Antecedente 3: Sales Performance Indicators at Construction Companies</span>
-                        </button>
-                        <div id="antecedente3" class="collapse-content p-4 text-gray-700">
-                            <p>
-                                Este artículo aborda la implementación
-                                de
-                                KPIs en empresas de construcción, destacando cómo los indicadores pueden alinearse con
-                                las metas estratégicas y
-                                operativas de la organización. Aunque es específico para la construcción, los principios
-                                sobre la alineación de
-                                KPIs
-                                con los objetivos empresariales y la mejora del clima laboral son aplicables al área de
-                                ventas en cualquier
-                                sector.
-                                (Shcherbyna, 2023).
-                            </p>
+                        <!-- Antecedente 3 -->
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <button onclick="toggleCollapse('antecedente3')"
+                                class="w-full text-left font-semibold text-lg py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300">
+                                <span>Antecedente 3: Sales Performance Indicators at Construction Companies</span>
+                            </button>
+                            <div id="antecedente3" class="collapse-content p-4 text-gray-700 mt-2">
+                                <p>
+                                    Este artículo aborda la implementación de KPIs en empresas de construcción,
+                                    destacando cómo los indicadores pueden alinearse con las metas estratégicas y
+                                    operativas de la organización. Aunque es específico para la construcción, los
+                                    principios sobre la alineación de KPIs con los objetivos empresariales y la mejora
+                                    del clima laboral son aplicables al área de ventas en cualquier sector. (Shcherbyna,
+                                    2023).
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Antecedente 4 -->
-                    <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
-                        <button onclick="toggleCollapse('antecedente4')"
-                            class="w-full text-left font-bold text-lg py-2">
-                            <span>Antecedente 4: Program and Project Management Using PMBOK-6 in Healthcare</span>
-                        </button>
-                        <div id="antecedente4" class="collapse-content p-4 text-gray-700">
-                            <p>
-                                Este estudio analiza la
-                                implementación
-                                de PMBOK-6 en proyectos de gestión de programas en el sistema de salud, destacando cómo
-                                los principios de PMBOK
-                                permiten la adaptación y flexibilidad para responder a los desafíos. Es un ejemplo
-                                aplicable para proyectos de
-                                implementación de KPIs, ya que el marco de trabajo puede ajustarse a las características
-                                específicas de las
-                                ventas.
-                                (Chernysheva et al., 2023).
-                            </p>
+                        <!-- Antecedente 4 -->
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <button onclick="toggleCollapse('antecedente4')"
+                                class="w-full text-left font-semibold text-lg py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300">
+                                <span>Antecedente 4: Program and Project Management Using PMBOK-6 in Healthcare</span>
+                            </button>
+                            <div id="antecedente4" class="collapse-content p-4 text-gray-700 mt-2">
+                                <p>
+                                    Este estudio analiza la implementación de PMBOK-6 en proyectos de gestión de
+                                    programas en el sistema de salud, destacando cómo los principios de PMBOK permiten
+                                    la adaptación y flexibilidad para responder a los desafíos. Es un ejemplo aplicable
+                                    para proyectos de implementación de KPIs, ya que el marco de trabajo puede ajustarse
+                                    a las características específicas de las ventas. (Chernysheva et al., 2023).
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Antecedente 5 -->
-                    <div class="bg-white rounded-lg shadow-lg p-4">
-                        <button onclick="toggleCollapse('antecedente5')"
-                            class="w-full text-left font-bold text-lg py-2">
-                            <span>Antecedente 5: The Role of Key Performance Indicators as a Performance Management
-                                Tool</span>
-                        </button>
-                        <div id="antecedente5" class="collapse-content p-4 text-gray-700">
-                            <p>
-                                Este artículo ofrece
-                                una
-                                revisión sistemática sobre la implementación de sistemas de gestión del rendimiento
-                                basados en KPIs. Se destaca
-                                la
-                                importancia de la formulación estratégica de los KPIs para alinearlos con los objetivos
-                                de la organización y
-                                garantizar su efectividad en la medición de resultados. Esto es crucial para la
-                                implementación de KPIs en áreas
-                                como
-                                ventas. (Hristov et al., 2022).
-                            </p>
+                        <!-- Antecedente 5 -->
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <button onclick="toggleCollapse('antecedente5')"
+                                class="w-full text-left font-semibold text-lg py-2 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300">
+                                <span>Antecedente 5: The Role of Key Performance Indicators as a Performance Management
+                                    Tool</span>
+                            </button>
+                            <div id="antecedente5" class="collapse-content p-4 text-gray-700 mt-2">
+                                <p>
+                                    Este artículo ofrece una revisión sistemática sobre la implementación de sistemas de
+                                    gestión del rendimiento basados en KPIs. Se destaca la importancia de la formulación
+                                    estratégica de los KPIs para alinearlos con los objetivos de la organización y
+                                    garantizar su efectividad en la medición de resultados. Esto es crucial para la
+                                    implementación de KPIs en áreas como ventas. (Hristov et al., 2022).
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </section>
 
             <!-- Sección de Etapas del Proyecto -->
             <section id="etapas" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Etapas del Proyecto</h2>
-                    <ol class="list-decimal pl-6 text-lg">
-                        <li><strong>Inicio del Proyecto:</strong> En la fase inicial, se establece el propósito y
-                            alcance del proyecto, que es mejorar la eficiencia y efectividad del soporte al cliente. Se
-                            identifican las áreas problemáticas, como largos tiempos de respuesta o baja satisfacción
-                            del cliente. Se definen los objetivos del proyecto y se crean los documentos necesarios,
-                            como el acta de constitución del proyecto, que formaliza el inicio y asegura el respaldo de
-                            la alta dirección. Además, se identifican y se comunican con los stakeholders clave, como el
-                            personal de soporte y los directivos, para obtener su aprobación y asegurar que todos estén
-                            alineados con el objetivo del proyecto.</li>
-                        <li><strong>Planificación:</strong> Analizar los procesos de soporte actuales para identificar
-                            problemas. Establecer objetivos claros y medibles para la optimización. Crear un plan
-                            detallado con cronograma, presupuesto y recursos necesarios. Planificar la comunicación y la
-                            gestión de riesgos..</li>
-                        <li><strong>Ejecución:</strong> Implementar las mejoras en los procesos de soporte, como
-                            actualizar herramientas y procedimientos. Capacitar al personal en nuevas prácticas.
-                            Asegurar que los cambios se realicen según el plan y resolver problemas que surjan..</li>
-                        <li><strong>Monitoreo y Control:</strong> Seguir el progreso del proyecto usando indicadores
-                            clave de rendimiento (KPIs). Comparar el desempeño con los objetivos establecidos. Ajustar
-                            el plan según sea necesario y gestionar cualquier cambio o riesgo..</li>
-                        <li><strong>Cierre del Proyecto:</strong> Revisar que todos los objetivos y entregables estén
-                            completos. Documentar los resultados y lecciones aprendidas. Entregar formalmente los
-                            resultados a los stakeholders y cerrar el proyecto.</li>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        <strong>Etapas del Proyecto</strong>
+                    </h2>
+
+                    <!-- Lista ordenada de etapas -->
+                    <ol class="list-decimal pl-6 text-lg space-y-6">
+                        <!-- Etapa 1 -->
+                        <li>
+                            <strong class="text-xl text-gray-800">Inicio del Proyecto:</strong>
+                            <p class="text-gray-700 mt-2">
+                                En la fase inicial, se establece el propósito y alcance del proyecto, que es mejorar la
+                                eficiencia
+                                y efectividad del soporte al cliente. Se identifican las áreas problemáticas, como
+                                largos tiempos de
+                                respuesta o baja satisfacción del cliente. Se definen los objetivos del proyecto y se
+                                crean los
+                                documentos necesarios, como el acta de constitución del proyecto, que formaliza el
+                                inicio y asegura el
+                                respaldo de la alta dirección. Además, se identifican y se comunican con los
+                                stakeholders clave, como
+                                el personal de soporte y los directivos, para obtener su aprobación y asegurar que todos
+                                estén alineados
+                                con el objetivo del proyecto.
+                            </p>
+                        </li>
+
+                        <!-- Etapa 2 -->
+                        <li>
+                            <strong class="text-xl text-gray-800">Planificación:</strong>
+                            <p class="text-gray-700 mt-2">
+                                Analizar los procesos de soporte actuales para identificar problemas. Establecer
+                                objetivos claros y
+                                medibles para la optimización. Crear un plan detallado con cronograma, presupuesto y
+                                recursos
+                                necesarios. Planificar la comunicación y la gestión de riesgos.
+                            </p>
+                        </li>
+
+                        <!-- Etapa 3 -->
+                        <li>
+                            <strong class="text-xl text-gray-800">Ejecución:</strong>
+                            <p class="text-gray-700 mt-2">
+                                Implementar las mejoras en los procesos de soporte, como actualizar herramientas y
+                                procedimientos.
+                                Capacitar al personal en nuevas prácticas. Asegurar que los cambios se realicen según el
+                                plan y resolver
+                                problemas que surjan.
+                            </p>
+                        </li>
+
+                        <!-- Etapa 4 -->
+                        <li>
+                            <strong class="text-xl text-gray-800">Monitoreo y Control:</strong>
+                            <p class="text-gray-700 mt-2">
+                                Seguir el progreso del proyecto usando indicadores clave de rendimiento (KPIs). Comparar
+                                el desempeño
+                                con los objetivos establecidos. Ajustar el plan según sea necesario y gestionar
+                                cualquier cambio o
+                                riesgo.
+                            </p>
+                        </li>
+
+                        <!-- Etapa 5 -->
+                        <li>
+                            <strong class="text-xl text-gray-800">Cierre del Proyecto:</strong>
+                            <p class="text-gray-700 mt-2">
+                                Revisar que todos los objetivos y entregables estén completos. Documentar los resultados
+                                y lecciones
+                                aprendidas. Entregar formalmente los resultados a los stakeholders y cerrar el proyecto.
+                            </p>
+                        </li>
                     </ol>
                 </div>
             </section>
-            <!--Acta de constitución-->
+
+            <!-- Acta de Constitución -->
             <section id="acta-constitucion" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Acta de Constitución</h2>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full h-96 border" src="20241021120202.pdf"
-                        frameborder="0"></iframe>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        <strong>Acta de Constitución</strong>
+                    </h2>
+
+                    <!-- Subtítulo de visualizador de PDF -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">
+                        <strong>Visualizador de PDF</strong>
+                    </h1>
+
+                    <!-- Contenedor del visualizador de PDF -->
+                    <div class="w-full bg-gray-100 p-4 rounded-lg shadow-sm">
+                        <iframe id="pdf-viewer" class="w-full h-96 border rounded-lg shadow" src="20241021120202.pdf"
+                            frameborder="0"></iframe>
+                    </div>
                 </div>
             </section>
-
-            <!-- Sección de factores ambientales -->
+            <!-- Sección de Factores Ambientales -->
             <section id="factores-ambientales" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Factores Ambientales </h2>
-                    <p>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">
+                        <strong>Factores Ambientales</strong>
+                    </h2>
+
+                    <!-- Contenido de la sección -->
+                    <p class="text-lg text-gray-700 leading-relaxed">
                         Dentro de los factores internos, destacan la cultura organizacional, que determinará la
-                        disposición de la empresa hacia la innovación y el uso de nuevas tecnologías, así como la
-                        estructura jerárquica, que influirá en la toma de decisiones clave. Además, es importante
-                        evaluar la capacidad técnica del equipo de ventas y su disposición para recibir capacitación
-                        sobre el uso de KPIs, y asegurarse de que la infraestructura tecnológica esté preparada para
-                        integrar herramientas como Power BI, que facilitarán la gestión y análisis de los indicadores.
-                        <br>
+                        disposición
+                        de la empresa hacia la innovación y el uso de nuevas tecnologías, así como la estructura
+                        jerárquica,
+                        que influirá en la toma de decisiones clave. Además, es importante evaluar la capacidad técnica
+                        del equipo
+                        de ventas y su disposición para recibir capacitación sobre el uso de KPIs, y asegurarse de que
+                        la
+                        infraestructura tecnológica esté preparada para integrar herramientas como Power BI, que
+                        facilitarán la
+                        gestión y análisis de los indicadores.
+                        <br><br>
                         En cuanto a los factores externos, las condiciones del mercado, como la demanda de equipos
-                        médicos y estéticos, junto con la competencia, afectarán directamente la definición y ajuste de
-                        los KPIs. Asimismo, las regulaciones gubernamentales en Perú, que impactan la venta de estos
-                        equipos, deben ser cumplidas rigurosamente, ya que pueden influir en los plazos de entrega y
-                        satisfacción del cliente. Finalmente, las tendencias tecnológicas y la capacidad de los
-                        proveedores y clientes para adaptarse a las demandas del proyecto
-
-
+                        médicos y
+                        estéticos, junto con la competencia, afectarán directamente la definición y ajuste de los KPIs.
+                        Asimismo,
+                        las regulaciones gubernamentales en Perú, que impactan la venta de estos equipos, deben ser
+                        cumplidas
+                        rigurosamente, ya que pueden influir en los plazos de entrega y satisfacción del cliente.
+                        Finalmente, las
+                        tendencias tecnológicas y la capacidad de los proveedores y clientes para adaptarse a las
+                        demandas del
+                        proyecto.
                     </p>
                 </div>
             </section>
-            <!--EDT-->
+            <!-- Sección EDT -->
             <section id="edt" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Estructura de Desglose del Trabajo (EDT)
-                    </h2>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full h-96 border" src="EDT.pdf" frameborder="0"></iframe>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Estructura de
+                        Desglose del Trabajo (EDT)</h2>
+
+                    <!-- Subtítulo para el visualizador de PDF -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h1>
+
+                    <!-- Visualizador de PDF -->
+                    <iframe id="pdf-viewer" class="w-full h-96 border-2 border-gray-300 rounded-lg" src="EDT.pdf"
+                        frameborder="0"></iframe>
                 </div>
             </section>
-            <!--plan de dirección del proyecto-->
+
+            <!-- Sección Plan de Dirección del Proyecto -->
             <section id="plan-direccion-proyecto" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Plan de Dirección del Proyecto
-                    </h2>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full h-96 border" src="plan de direcccion.pdf"
-                        frameborder="0"></iframe>
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Plan de
+                        Dirección del Proyecto</h2>
+
+                    <!-- Subtítulo para el visualizador de PDF -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h1>
+
+                    <!-- Visualizador de PDF -->
+                    <iframe id="pdf-viewer" class="w-full h-96 border-2 border-gray-300 rounded-lg"
+                        src="plan de direcccion.pdf" frameborder="0"></iframe>
                 </div>
             </section>
-            <!--diagrama de red-->
+
+            <!-- Sección Diagrama de Red -->
             <section id="diagrama-red" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Diagrama de Red
-                    </h2>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full h-96 border" src="Diagrama_de_red.pdf"
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Diagrama de
+                        Red</h2>
+
+                    <!-- Subtítulo para el visualizador de PDF -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h1>
+
+                    <!-- Visualizador de PDF -->
+                    <iframe id="pdf-viewer" class="w-full h-96 border-2 border-gray-300 rounded-lg"
+                        src="Diagrama_de_red.pdf" frameborder="0"></iframe>
+                </div>
+            </section>
+
+            <!-- Sección Lista de Hitos -->
+            <section id="lista-hitos" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Lista de
+                        Hitos</h2>
+
+                    <!-- Subtítulo para el visualizador de PDF -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h1>
+
+                    <!-- Visualizador de PDF -->
+                    <iframe id="pdf-viewer" class="w-full h-96 border-2 border-gray-300 rounded-lg" src="Hitos.pdf"
                         frameborder="0"></iframe>
                 </div>
             </section>
-            <!--lista de hitos-->
-            <section id="lista-hitos" class="mb-12">
+
+            <!-- Sección Ruta Crítica -->
+            <section id="ruta-critica" class="mb-12">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-3xl font-bold mb-4">Lista de hitos
+                    <!-- Título de la sección -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Ruta Crítica
                     </h2>
-                    <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                    <iframe id="pdf-viewer" class="w-full h-96 border" src="Hitos.pdf" frameborder="0"></iframe>
-                </div>
-                <!--ruta critica-->
-                <section id="ruta-critica" class="mb-12">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h2 class="text-3xl font-bold mb-4">Ruta Crítica</h2>
-                        <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                        <iframe id="pdf-viewer" class="w-full h-96 border" src="ruta-critica-cropped.pdf"
-                            frameborder="0"></iframe>
-                        <div class="mt-6">
-                            <p class="text-gray-700">
-                                La ruta crítica representa la secuencia de actividades esenciales que determinan la
-                                duración total del proyecto. Estas actividades no tienen holgura, por lo que cualquier
-                                retraso en ellas afecta directamente la fecha final. En este proyecto, la ruta crítica
-                                incluye actividades desde la recopilación y validación de datos hasta la presentación
-                                final de resultados y recomendaciones. Estas actividades abarcan:
-                            </p>
-                            <ul class="list-disc ml-6 text-gray-700">
-                                <li><strong>Recopilación, validación y análisis de datos:</strong> Es la base del
-                                    proyecto, ya que garantiza que la información utilizada sea confiable y relevante
-                                    para el diseño del tablero.</li>
-                                <li><strong>Diseño y ajustes del tablero:</strong> Comprende la creación del prototipo,
-                                    los ajustes según el feedback de los interesados y la validación de las
-                                    visualizaciones.</li>
-                                <li><strong>Configuración e integración de Power BI:</strong> Asegura que el tablero
-                                    funcione con datos reales y precisos.</li>
-                                <li><strong>Validación y documentación de resultados:</strong> Incluye la evaluación del
-                                    desempeño del tablero, la elaboración del informe final y su revisión con el equipo.
-                                </li>
-                                <li><strong>Presentación final y cierre:</strong> Se realiza la entrega de resultados,
-                                    el análisis del feedback de los usuarios y la presentación de recomendaciones para
-                                    optimización.</li>
-                            </ul>
-                            <p class="text-gray-700 mt-4">
-                                Estas actividades son críticas porque forman una cadena de dependencias directas. El
-                                cumplimiento puntual de cada una es indispensable para garantizar el éxito del proyecto
-                                y su entrega en los plazos establecidos.
-                            </p>
-                        </div>
-                    </div>
-                </section>
 
+                    <!-- Subtítulo para el visualizador de PDF -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h1>
 
-                <!--Cronograma de actividades-->
-                <section id="project-cronograma" class="mb-12">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h2 class="text-3xl font-bold mb-4">Cronograma de actividades en Project</h2>
-                        <h1 class="text-xl font-bold mb-4">Visualizador de PDF</h1>
-                        <iframe id="pdf-viewer" class="w-full border" style="height: 1145px;" src="cronograma.pdf"
-                            frameborder="0"></iframe>
-                        <div class="mt-6">
-                            <h3 class="text-2xl font-semibold mb-4">Descripción del Cronograma de Actividades</h3>
-                            <p class="text-gray-700">
-                                El cronograma de actividades desarrollado en Project detalla de manera estructurada y
-                                visual las tareas,
-                                dependencias y duraciones involucradas en la ejecución del proyecto. Este cronograma
-                                permite:
-                            </p>
-                            <ul class="list-disc ml-6 text-gray-700">
-                                <li>Identificar claramente las actividades críticas y no críticas, optimizando los
-                                    tiempos de ejecución.</li>
-                                <li>Visualizar las dependencias entre tareas para garantizar una correcta coordinación.
-                                </li>
-                                <li>Monitorear el progreso del proyecto respecto a los plazos establecidos.</li>
-                                <li>Facilitar la planificación y toma de decisiones a través de herramientas de gestión
-                                    visual.</li>
-                            </ul>
-                            <p class="text-gray-700 mt-4">
-                                Este cronograma asegura un control eficiente del proyecto, estableciendo una hoja de
-                                ruta clara para cada fase.
-                            </p>
-                        </div>
-                    </div>
-                </section>
+                    <!-- Visualizador de PDF -->
+                    <iframe id="pdf-viewer" class="w-full h-96 border-2 border-gray-300 rounded-lg"
+                        src="ruta-critica-cropped.pdf" frameborder="0"></iframe>
 
-                <!-- Sección de Referencias -->
-                <section id="referencias" class="mb-12">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h2 class="text-3xl font-bold mb-4">Referencias</h2>
-                        <ol class="list-decimal pl-6 text-lg">
-                            <li>Bogojevic, P. (2020). Project Management in Data Warehouse Implementations: A Literature
-                                Review. <em>IEEE Access</em>, 8, 225902-225934.
-                                <a href="https://doi.org/10.1109/access.2020.3045072"
-                                    class="underline">https://doi.org/10.1109/access.2020.3045072</a>
+                    <!-- Descripción de la Ruta Crítica -->
+                    <div class="mt-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            La ruta crítica representa la secuencia de actividades esenciales que determinan la duración
+                            total del proyecto. Estas actividades no tienen holgura, por lo que cualquier retraso en
+                            ellas afecta directamente la fecha final. En este proyecto, la ruta crítica incluye
+                            actividades desde la recopilación y validación de datos hasta la presentación final de
+                            resultados y recomendaciones. Estas actividades abarcan:
+                        </p>
+                        <ul class="list-disc ml-6 mt-4 text-gray-700 leading-relaxed">
+                            <li><strong>Recopilación, validación y análisis de datos:</strong> Es la base del proyecto,
+                                ya que garantiza que la información utilizada sea confiable y relevante para el diseño
+                                del tablero.</li>
+                            <li><strong>Diseño y ajustes del tablero:</strong> Comprende la creación del prototipo, los
+                                ajustes según el feedback de los interesados y la validación de las visualizaciones.
                             </li>
-                            <li>Gatto, D., Evangelista, J., Silva, R., & Sassi, R. (2023). Six Sigma methodology based
-                                on
-                                the PMBOK guide in the release management process in software developer enterprise.
+                            <li><strong>Configuración e integración de Power BI:</strong> Asegura que el tablero
+                                funcione con datos reales y precisos.</li>
+                            <li><strong>Validación y documentación de resultados:</strong> Incluye la evaluación del
+                                desempeño del tablero, la elaboración del informe final y su revisión con el equipo.
+                            </li>
+                            <li><strong>Presentación final y cierre:</strong> Se realiza la entrega de resultados, el
+                                análisis del feedback de los usuarios y la presentación de recomendaciones para
+                                optimización.</li>
+                        </ul>
+                        <p class="text-gray-700 mt-4 leading-relaxed">
+                            Estas actividades son críticas porque forman una cadena de dependencias directas. El
+                            cumplimiento puntual de cada una es indispensable para garantizar el éxito del proyecto y su
+                            entrega en los plazos establecidos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cronograma de Actividades -->
+            <section id="project-cronograma" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <!-- Título Principal -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Cronograma de
+                        Actividades en Project</h2>
+
+                    <!-- Subtítulo del Visualizador -->
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">Visualizador de PDF</h1>
+
+                    <!-- Visualizador de PDF -->
+                    <iframe id="pdf-viewer" class="w-full border-2 border-gray-300 rounded-lg shadow-sm"
+                        style="height: 1145px;" src="cronograma.pdf" frameborder="0">
+                    </iframe>
+
+                    <!-- Descripción del Cronograma -->
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-semibold text-blue-600 mb-4">Descripción del Cronograma de Actividades
+                        </h3>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                            El cronograma de actividades desarrollado en Project detalla de manera estructurada y visual
+                            las
+                            tareas, dependencias y duraciones involucradas en la ejecución del proyecto. Este cronograma
+                            permite:
+                        </p>
+
+                        <!-- Lista de Beneficios -->
+                        <ul class="list-disc pl-8 text-gray-700 text-lg space-y-3">
+                            <li>
+                                <span class="font-semibold">Identificar claramente</span> las actividades críticas y no
+                                críticas,
+                                optimizando los tiempos de ejecución.
+                            </li>
+                            <li>
+                                <span class="font-semibold">Visualizar las dependencias</span> entre tareas para
+                                garantizar una
+                                correcta coordinación.
+                            </li>
+                            <li>
+                                <span class="font-semibold">Monitorear el progreso</span> del proyecto respecto a los
+                                plazos establecidos.
+                            </li>
+                            <li>
+                                <span class="font-semibold">Facilitar la planificación</span> y toma de decisiones a
+                                través de herramientas
+                                de gestión visual.
+                            </li>
+                        </ul>
+
+                        <!-- Conclusión -->
+                        <p class="text-gray-700 text-lg leading-relaxed mt-6">
+                            Este cronograma asegura un control eficiente del proyecto, estableciendo una hoja de ruta
+                            clara
+                            para cada fase.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- Sección de Referencias -->
+            <section id="referencias" class="mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <!-- Título -->
+                    <h2 class="text-3xl font-extrabold mb-6 text-blue-800 border-b-4 border-blue-600 pb-2">Referencias
+                    </h2>
+
+                    <!-- Lista de Referencias -->
+                    <ol class="list-decimal pl-8 text-lg space-y-6">
+                        <li>
+                            <p class="text-gray-800">
+                                Bogojevic, P. (2020). Project Management in Data Warehouse Implementations: A Literature
+                                Review.
+                                <em>IEEE Access</em>, 8, 225902-225934.
+                                <a href="https://doi.org/10.1109/access.2020.3045072"
+                                    class="text-blue-600 underline hover:text-blue-800">
+                                    https://doi.org/10.1109/access.2020.3045072
+                                </a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-gray-800">
+                                Gatto, D., Evangelista, J., Silva, R., & Sassi, R. (2023). Six Sigma methodology based
+                                on the PMBOK guide in the release management process in software developer enterprise.
                                 <em>Cuadernos de Educación y Desarrollo</em>.
                                 <a href="https://doi.org/10.55905/cuadv15n10-035"
-                                    class="underline">https://doi.org/10.55905/cuadv15n10-035</a>
-                            </li>
-                            <li>Shcherbyna, O. (2023). SALES PERFORMANCE INDICATORS AT CONSTRUCTION COMPANIES.
-                                <em>Actual
-                                    Problems of Economics</em>.
+                                    class="text-blue-600 underline hover:text-blue-800">
+                                    https://doi.org/10.55905/cuadv15n10-035
+                                </a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-gray-800">
+                                Shcherbyna, O. (2023). SALES PERFORMANCE INDICATORS AT CONSTRUCTION COMPANIES.
+                                <em>Actual Problems of Economics</em>.
                                 <a href="https://doi.org/10.32752/1993-6788-2023-1-261-6-15"
-                                    class="underline">https://doi.org/10.32752/1993-6788-2023-1-261-6-15</a>
-                            </li>
-                            <li>Chernysheva, M., Kalugina, M., Rogachev, D., & Nassif, O. (2023). Program and project
+                                    class="text-blue-600 underline hover:text-blue-800">
+                                    https://doi.org/10.32752/1993-6788-2023-1-261-6-15
+                                </a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-gray-800">
+                                Chernysheva, M., Kalugina, M., Rogachev, D., & Nassif, O. (2023). Program and project
                                 management using PMBOK-6: general principles and features of healthcare system standard.
                                 <em>Tambov Medical Journal</em>.
                                 <a href="https://doi.org/10.20310/2782-5019-2023-5-2-51-57"
-                                    class="underline">https://doi.org/10.20310/2782-5019-2023-5-2-51-57</a>
-                            </li>
-                            <li>Hristov, I., Chirico, A., & Camilli, R. (2022). The role of Key Performance Indicators
-                                as a
-                                performance management tool in implementing corporate strategies: A critical review of
-                                the
-                                literature. <em>FINANCIAL REPORTING</em>.
+                                    class="text-blue-600 underline hover:text-blue-800">
+                                    https://doi.org/10.20310/2782-5019-2023-5-2-51-57
+                                </a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-gray-800">
+                                Hristov, I., Chirico, A., & Camilli, R. (2022). The role of Key Performance Indicators
+                                as a performance management tool in implementing corporate strategies: A critical review
+                                of the literature.
+                                <em>FINANCIAL REPORTING</em>.
                                 <a href="https://doi.org/10.3280/fr2022-001004"
-                                    class="underline">https://doi.org/10.3280/fr2022-001004</a>
-                            </li>
-                        </ol>
-                    </div>
+                                    class="text-blue-600 underline hover:text-blue-800">
+                                    https://doi.org/10.3280/fr2022-001004
+                                </a>
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </section>
 
         </main>
     </div>
-    <footer class="flex justify-center items-center h-16 bg-blue-400 text-white">
-        <p>© 2024 Phymed - FEP. Todos los derechos reservados.</p>
+    <footer class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto flex justify-center items-center">
+            <!-- Texto principal -->
+            <p class="text-sm sm:text-base text-center">
+                © 2024 Phymed - FEP. Todos los derechos reservados.
+            </p>
+        </div>
     </footer>
+
+
     <script src="script.js"></script>
 
 </body>
